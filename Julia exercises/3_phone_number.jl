@@ -82,8 +82,7 @@ function remove_punct(phone_number::String)
 end
 
 
-# the idea is to filter out special characters or anything that is not a digit. Occursin should have worked faster but then the regex would get complex
-#as you have search through all possibilities of special characters and digits. 
+# the idea is to filter out special characters or anything that is not a digit. Occursin should have worked faster but then the regex would get complex.
 
 function has_weird_chars(phone_number::String)::Bool
     r = replace(phone_number, r"([+\d])" =>"")
