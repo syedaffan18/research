@@ -95,7 +95,7 @@ function has_weird_chars(phone_number::String)::Bool
 end 
 
 function is_valid_n(n::Char)::Bool
-    #if the char is not convertable, the parse function will throw the natural Argument error. 
+    #if the char is not convertible, the parse function will throw the natural Argument error. 
     integer = parse(Int,n)
     if (integer >= 2 && integer <= 9) return true else return false end
 end
