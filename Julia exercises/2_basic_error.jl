@@ -29,12 +29,15 @@ function cube_of_sum(n::Int)
 end
 
 function sum_of_cubes(n::Int)
-    sum((1:n).^ 2)
+    sum((1:n).^ 2) # should be sum((1:n).^ 3) 
 end
 
 function difference(n::Int)
     sum_of_cubes(n) - cube_of_sum(n)
 end
+
+#the way I see it, it seems wrong.  (1^3 + 2^3 + 3^3 + 4^3 + 5^3 + 6^3 + 7^3 + 8^3 + 9^3 + 10^3) - (1+2+...+10)^3 is not -165990 
+#the test seems to work for it but the sum_of_cubes should be sum((1:n).^ 3) and the answer is -163350 for n = 10
 
 @testset "Exercise 2" begin
     @test difference(10) == -165990
