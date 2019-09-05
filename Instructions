@@ -9,3 +9,7 @@ Instructions
 4) The trivial communication complexity code is trying to find a better protocol than majority protocol under certain conditions defined in the paper (https://arxiv.org/abs/quant-ph/0508042) in order to see if shared calculation of any boolean function still requires constant communication. Theoretically speaking, if we have access to certain kind of correlations called Popescue-Rochlich (also found in the cdd covex polytope's output 'chsh.ext' file), two parties (Alice and Bob) can calculate a shared inner product with just the transfer of one bit to another. In the classical sense, we have to iterate through both alice and bob's vectors to do the sum. Needless to say inner product can simulate any boolean function. 
 
 5) the other code helped me find protocol that distilled the correlations. The generate rule helped me 'trivially' traversed the tripartie polytope's subspace, which follows the rule f(x,y,z) = g(a,b,c)
+
+6) Some of the codes are not well-optimized because they were not written for long-run 
+
+7) If you want to see some organized code, I can write it for you. 
