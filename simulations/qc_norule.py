@@ -118,6 +118,7 @@ def nlb():
     
     #corr = 0
 
+## used online resources to write the following function. Not my novel idea! But it just improves the format. I understand the code though! 
 def beautify(matrix):
     s = [[str(e) for e in row] for row in matrix]
     lens = [max(map(len, col)) for col in zip(*s)]
