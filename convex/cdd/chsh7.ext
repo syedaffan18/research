@@ -1,0 +1,28 @@
+* cdd+: Double Description Method in C++:Version 0.76a1 (June 8, 1999)
+* Copyright (C) 1999, Komei Fukuda, fukuda@ifor.math.ethz.ch
+* Compiled for Rational Exact Arithmetic with GMP
+*Input File:chsh2.ine(57x17)
+*HyperplaneOrder: LexMin
+*Degeneracy preknowledge for computation: None (possible degeneracy)
+*Vertex/Ray enumeration is chosen.
+*Computation completed at Iteration 38.
+*Computation starts     at Mon Dec 13 19:04:50 2010
+*            terminates at Mon Dec 13 19:04:51 2010
+*Total processor time = 1 seconds
+*                     = 0h 0m 1s
+*FINAL RESULT:
+*Number of Vertices =9, Rays =0
+V-representation
+begin
+9  17  rational
+ 1 1 0 0 0 0 0 1 0 1 0 0 0 1 0 0 0
+ 1 1 0 0 0 1 0 0 0 0 0 1 0 1 0 0 0
+ 1 1 0 0 0 1 0 0 0 0 1 0 0 0 0 0 1
+ 1 1/2 1/2 0 0 1/2 1/2 0 0 1/2 1/2 0 0 1/2 1/2 0 0
+ 1 0 1 0 0 0 1 0 0 1 0 0 0 0 0 1 0
+ 1 0 1 0 0 0 1 0 0 0 0 0 1 0 1 0 0
+ 1 0 1 0 0 0 0 0 1 0 1 0 0 0 1 0 0
+ 1 0 0 1 0 1 0 0 0 0 1 0 0 0 1 0 0
+ 1 0 0 0 1 0 1 0 0 1 0 0 0 1 0 0 0
+end
+hull

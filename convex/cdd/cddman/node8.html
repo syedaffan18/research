@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Some Useful Tips for Usage</TITLE>
+<META NAME="description" CONTENT="Some Useful Tips for Usage">
+<META NAME="keywords" CONTENT="cddman">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cddman.css">
+
+<LINK REL="next" HREF="node9.html">
+<LINK REL="previous" HREF="node7.html">
+<LINK REL="up" HREF="cddman.html">
+<LINK REL="next" HREF="node9.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html111"
+  HREF="node9.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html109"
+  HREF="cddman.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html103"
+  HREF="node7.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html112"
+  HREF="node9.html">Bugs</A>
+<B> Up:</B> <A NAME="tex2html110"
+  HREF="cddman.html">cdd/cdd+ Reference Manual</A>
+<B> Previous:</B> <A NAME="tex2html104"
+  HREF="node7.html">Source Files and Compilation</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00080000000000000000"></A>  <A NAME="TIPS"></A>
+<BR>
+Some  Useful Tips for Usage
+</H1>
+
+<P>
+The computation is done by floating point arithmetic by both cdd and cddf+,
+and by exact rational arithmetic by cddr+. 
+Since cddr+ runs much slower (at least for the moment),
+use it when you need to make sure that the output is correct.
+
+<P>
+Clearly, there is no guarantee 
+that the programs cdd and cddf+ outputs the correct result.  
+However they seems to work correctly 
+for many different types of polyhedra if one
+carefully prepares input data files.   The followings
+are some useful tips  for  input data preparation to 
+avoid badly behaving computations with cddf+.
+
+<P>
+
+<UL>
+<LI>In cddf+, any real value is considered as zero if its absolute value is
+less than <IMG
+ WIDTH="40" HEIGHT="19" ALIGN="BOTTOM" BORDER="0"
+ SRC="img82.png"
+ ALT="$10^{-6}$">.  Since the computation is performed with double precision
+arithmetic, the correctness of zero recognition depends greatly on <B>how
+accurate</B> the input matrix <IMG
+ WIDTH="60" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img86.png"
+ ALT="$(b- A)$"> is.  For example, you should never use
+<IMG
+ WIDTH="53" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img87.png"
+ ALT="$0.9999$"> for the value <IMG
+ WIDTH="13" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.png"
+ ALT="$1$">.  Just use the correct value <IMG
+ WIDTH="13" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.png"
+ ALT="$1$"> as it is.
+Unlike many LP softwares, perturbation of data
+can cause some serious problems.  If you want to perturb your data (e.g. right
+hand side) for some reason, do it with large enough constants, say of order
+<IMG
+ WIDTH="40" HEIGHT="19" ALIGN="BOTTOM" BORDER="0"
+ SRC="img88.png"
+ ALT="$10^{-3}$">.
+
+<P>
+</LI>
+<LI>If your matrix contains some irrational number, say
+<IMG
+ WIDTH="28" HEIGHT="39" ALIGN="MIDDLE" BORDER="0"
+ SRC="img89.png"
+ ALT="$\sqrt{5}$">, please use an approximation which is correct in at least <B>ten</B> digits,
+i.e.  <IMG
+ WIDTH="96" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img90.png"
+ ALT="$2.236067977$">.   See the sample input file  reg600-5.ine in the ine subdirectory.
+
+<P>
+</LI>
+<LI>For the same arithmetic reason, please try to scale your input matrix
+as even as possible by multiplying appropriate constants to some rows and
+columns .   The program cdd does not perform any scaling before
+computation.
+
+<P>
+</LI>
+</UL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html111"
+  HREF="node9.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html109"
+  HREF="cddman.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html103"
+  HREF="node7.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html112"
+  HREF="node9.html">Bugs</A>
+<B> Up:</B> <A NAME="tex2html110"
+  HREF="cddman.html">cdd/cdd+ Reference Manual</A>
+<B> Previous:</B> <A NAME="tex2html104"
+  HREF="node7.html">Source Files and Compilation</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Komei Fukuda
+2005-08-18
+</ADDRESS>
+</BODY>
+</HTML>

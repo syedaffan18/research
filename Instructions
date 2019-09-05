@@ -1,0 +1,11 @@
+Instructions
+
+1) The 'convex' has the *.ine files, which basically are inequalities we use to generate a convex polytope using CDD Software (https://inf.ethz.ch/personal/fukudak/cdd_home/). We have considered multiple cases (in terms of inequalities) to study difficult polytopes. One of them I mentioned during the interviews called no-signalling polytope where we have independence constraints. chsh.ine file corresponds to one of its case. 
+
+2) The 'documents' folder has my collaborative thesis and posters. I majorly worked on correlation distillation, ghz correlation distillation and its analytical proofs. 
+
+3) The simulation code shows some 'part' of my code. It is not the entire code. The MATLAB file is basically trying to simulate a noisy correlation using some others correlations given the value is low. It is one such code. It uses MATLAB cvx for linear programming. 
+
+4) The trivial communication complexity code is trying to find a better protocol than majority protocol under certain conditions defined in the paper (https://arxiv.org/abs/quant-ph/0508042) in order to see if shared calculation of any boolean function still requires constant communication. Theoretically speaking, if we have access to certain kind of correlations called Popescue-Rochlich (also found in the cdd covex polytope's output 'chsh.ext' file), two parties (Alice and Bob) can calculate a shared inner product with just the transfer of one bit to another. In the classical sense, we have to iterate through both alice and bob's vectors to do the sum. Needless to say inner product can simulate any boolean function. 
+
+5) the other code helped me find protocol that distilled the correlations. 

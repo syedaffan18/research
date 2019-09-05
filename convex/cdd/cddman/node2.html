@@ -1,0 +1,264 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Introduction</TITLE>
+<META NAME="description" CONTENT="Introduction">
+<META NAME="keywords" CONTENT="cddman">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cddman.css">
+
+<LINK REL="next" HREF="node3.html">
+<LINK REL="previous" HREF="node1.html">
+<LINK REL="up" HREF="cddman.html">
+<LINK REL="next" HREF="node3.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html51"
+  HREF="node3.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html49"
+  HREF="cddman.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html43"
+  HREF="node1.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html52"
+  HREF="node3.html">Polyhedra H- and V-Formats</A>
+<B> Up:</B> <A NAME="tex2html50"
+  HREF="cddman.html">cdd/cdd+ Reference Manual</A>
+<B> Previous:</B> <A NAME="tex2html44"
+  HREF="node1.html">What's new?</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00020000000000000000"></A> <A NAME="INTRODUCTION"></A>
+<BR>
+Introduction
+</H1>
+
+<P>
+The program  cdd+  (cdd, respectively)   is 
+a C++  (ANSI C) implementation of 
+the Double Description Method&nbsp;[<A
+ HREF="node13.html#mrtt-ddm-53">MRTT53</A>]
+for generating all vertices (i.e. extreme points)
+and extreme rays of a general 
+convex polyhedron given by a system of linear inequalities:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ \begin{displaymath}
+P = \{ x  \in R^d:  A  x  \le  b \}
+\end{displaymath}
+ -->
+
+<IMG
+ WIDTH="174" HEIGHT="31" BORDER="0"
+ SRC="img1.png"
+ ALT="\begin{displaymath}
+P = \{ x \in R^d: A x \le b \}
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+where <IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.png"
+ ALT="$A$"> is an <IMG
+ WIDTH="50" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.png"
+ ALT="$m \times d$"> real matrix and <IMG
+ WIDTH="12" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img4.png"
+ ALT="$b$"> is a real
+<IMG
+ WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.png"
+ ALT="$m$"> dimensional vector.   See, [<A
+ HREF="node13.html#fp-ddmr-96">FP96</A>] for
+an efficient implementation of the double description
+method which is employed in cdd+.
+
+<P>
+One useful feature of  cdd/cdd+ is its capability
+of handling the dual (reverse)  problem without any transformation
+of data.  The dual problem is known to be the 
+<EM>(convex) hull problem</EM> which
+is to obtain a linear inequality representation
+of a convex polyhedron given as the Minkowski sum of 
+the convex hull of a finite set of points and the nonnegative
+hull of a finite set of points in <IMG
+ WIDTH="26" HEIGHT="19" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.png"
+ ALT="$R^d$">: 
+<!-- MATH
+ $P = conv(v_1,\ldots,v_n) +  nonneg(r_1,\ldots,r_s)$
+ -->
+<IMG
+ WIDTH="323" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img7.png"
+ ALT="$P = conv(v_1,\ldots,v_n) + nonneg(r_1,\ldots,r_s)$">, where
+ the <EM>Minkowski sum of two subsets <IMG
+ WIDTH="16" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img8.png"
+ ALT="$S$"> and <IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img9.png"
+ ALT="$T$"></EM> of <IMG
+ WIDTH="26" HEIGHT="19" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.png"
+ ALT="$R^d$"> is defined
+as <!-- MATH
+ $S + T = \{ s + t \; |  s \in S \mbox{ and } t \in T \}$
+ -->
+<IMG
+ WIDTH="257" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img10.png"
+ ALT="$S + T = \{ s + t \; \vert s \in S \mbox{ and } t \in T \}$">.
+As we see in this manual, the computation can be done
+in straightforward manner.  There is one assumption for the input
+for hull computation: the polyhedron must be full-dimensional.
+
+<P>
+Besides these basic functions, cdd/cdd+ can solve the general
+linear programming (LP) problem to maximize (or minimize) a linear
+function over polyhedron <IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img11.png"
+ ALT="$P$">.   It is useful mainly for solving 
+dense LP's with large <IMG
+ WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.png"
+ ALT="$m$"> (say, up to few hundred thousands) and small <IMG
+ WIDTH="13" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img12.png"
+ ALT="$d$"> 
+(say, up to 100).
+
+<P>
+The program cdd+ is a C++ program, converted from the ANSI C
+program cdd in 1995.  Both programs have been updated for a few times since then.
+One major advantage of this C++-version over the C version is
+that it can be compiled for both rational (exact) arithmetic and 
+floating point arithmetic.  Note that cdd runs on floating
+arithmetic only.  Since cdd+ uses GNU g++ library, in particular 
+Rational library, one needs a recent (2.6.3 or higher) gcc compiler
+and g++-lib.  One should be also warned that the computation
+can be considerably  (10 - 100 times or even more) slower if the rational
+arithmetic is used.  My idea is to keep the ANSI C code cdd as simple as
+as possible, while the C++ code cdd+ will be used to be an experimental
+platform to test new ideas.
+
+<P>
+The program cdd/cdd+ reads input and writes output in 
+<EM>Polyhedra format</EM> which was defined by David Avis and
+the author in 1993, and has been updated in 1997.  
+The program called lrs [<A
+ HREF="node13.html#a-uglrs-97">Avi97</A>] developed by David Avis is
+a C-implementation of the reverse search algorithm&nbsp;[<A
+ HREF="node13.html#af-pachv-92">AF92</A>] 
+for the same enumeration purpose, and it conforms to Polyhedra format as well.
+Hopefully, this compatibility of the two programs
+enables users to use both programs for the same input files
+and to choose whichever is useful for their purposes.
+From our experiences with relatively large problems,
+the two methods are both useful and perhaps complementary
+to each other.  In general, the program cdd+ tends to be
+efficient for highly degenerate inputs and the program rs
+tends to be efficient for nondegenerate or slightly
+degenerate problems.
+
+<P>
+Among the hardest problems that could be
+solved (in floating-point arithmetic) by cdd+ is a 
+21-dimensional hull problem given by 64 
+vertices. This polytope, known as the <EM>complete
+cut polytope on 7 points</EM>, has exactly 116,764 facets
+and some of facets contain many vertices. 
+It took 205 hours (eight and half days!) for cdd
+to compute the facets exactly on a SUN SparkServer 1000.
+The input file (ccp7.ine) of this polytope is
+included in the distribution.  A considerably easier
+problem is ccc7.ine which is a variation of the problem 
+(see e.g. [<A
+ HREF="node13.html#g-afccn-90">Gri90</A>]).
+
+<P>
+The size of an input file hardly indicates the degree of 
+hardness of its vertex/ray enumeration.  While this program
+can handle a highly degenerate problem (prodmT5.ine) with 
+711 inequalities in  19 dimension quite easily with
+the computation time 1-2 minutes on a fast workstation, 
+a 8-dimensional problem (mit729-9.ine) with 729 inequalities
+can be extremely hard.  It takes two days to compute all
+(only 4862) vertices by a SUN SparkServer 1000.  The latter problem arises
+from the ground state analysis of a ternary alloy model, see [<A
+ HREF="node13.html#cgaf-gstfl-94">CGAF94</A>].
+Both input files are included in the distribution.  
+
+<P>
+Although the program can be used for nondegenerate inputs,
+it might not be very efficient.  For nondegenerate inputs, 
+other available programs, such as the reverse search code lrs or
+qhull (developed by the Geometry Center),
+might be more efficient.  See Section&nbsp;<A HREF="node11.html#CODES">11</A> 
+for pointers to these codes.  
+The paper [<A
+ HREF="node13.html#abs-hgach-97">ABS97</A>] contains many interesting results on polyhedral
+computation and experimental results on cdd+, lrs, qhull and porta.
+
+<P>
+This program can be distributed freely under the GNU GENERAL PUBLIC LICENSE.
+Please read the file COPYING carefully before using.
+
+<P>
+I will not take any responsibility of any problems you might have
+with this program.  But I will be glad to receive bug reports or suggestions
+at the e-mail addresses above.  Finally, if cdd+ turns out to be useful, 
+please kindly inform  me of  what purposes cdd has been used for. 
+I will be happy to include a list of applications in future
+distribution  if I receive  enough replies.
+The most powerful support for free software development
+is user's appreciation and collaboration.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html51"
+  HREF="node3.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html49"
+  HREF="cddman.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html43"
+  HREF="node1.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html52"
+  HREF="node3.html">Polyhedra H- and V-Formats</A>
+<B> Up:</B> <A NAME="tex2html50"
+  HREF="cddman.html">cdd/cdd+ Reference Manual</A>
+<B> Previous:</B> <A NAME="tex2html44"
+  HREF="node1.html">What's new?</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Komei Fukuda
+2005-08-18
+</ADDRESS>
+</BODY>
+</HTML>

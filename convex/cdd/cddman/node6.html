@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Source Files and Compilation for cdd</TITLE>
+<META NAME="description" CONTENT="Source Files and Compilation for cdd">
+<META NAME="keywords" CONTENT="cddman">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cddman.css">
+
+<LINK REL="next" HREF="node7.html">
+<LINK REL="previous" HREF="node5.html">
+<LINK REL="up" HREF="cddman.html">
+<LINK REL="next" HREF="node7.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html91"
+  HREF="node7.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html89"
+  HREF="cddman.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html83"
+  HREF="node5.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html92"
+  HREF="node7.html">Source Files and Compilation</A>
+<B> Up:</B> <A NAME="tex2html90"
+  HREF="cddman.html">cdd/cdd+ Reference Manual</A>
+<B> Previous:</B> <A NAME="tex2html84"
+  HREF="node5.html">How to Use</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00060000000000000000"></A>  <A NAME="sources_cdd"></A>
+<BR>
+Source Files and Compilation for cdd
+</H1>
+
+<P>
+<DL COMPACT>
+<DT>(1)</DT>
+<DD>[Files and Compilation] The source files for distribution are
+
+<P>
+<TABLE CELLPADDING=3>
+<TR><TD ALIGN="LEFT">cdd.c</TD>
+<TD ALIGN="LEFT">C main source file</TD>
+</TR>
+<TR><TD ALIGN="LEFT">cddarith.c</TD>
+<TD ALIGN="LEFT">C sub source file</TD>
+</TR>
+<TR><TD ALIGN="LEFT">cddio.c</TD>
+<TD ALIGN="LEFT">C sub source file</TD>
+</TR>
+<TR><TD ALIGN="LEFT">cdd.h</TD>
+<TD ALIGN="LEFT">header file for cdd.c</TD>
+</TR>
+<TR><TD ALIGN="LEFT">cdddef.h</TD>
+<TD ALIGN="LEFT">cdd definition file (whose two lines are to be edited by user)</TD>
+</TR>
+<TR><TD ALIGN="LEFT">dplex.c</TD>
+<TD ALIGN="LEFT">dual simplex library</TD>
+</TR>
+<TR><TD ALIGN="LEFT">dplex.h</TD>
+<TD ALIGN="LEFT">header file for dplex</TD>
+</TR>
+<TR><TD ALIGN="LEFT">dplexdef.h</TD>
+<TD ALIGN="LEFT">additional header file for dplex</TD>
+</TR>
+<TR><TD ALIGN="LEFT">dplex_test.c</TD>
+<TD ALIGN="LEFT">sample main program for dplex</TD>
+</TR>
+<TR><TD ALIGN="LEFT">setoper.c</TD>
+<TD ALIGN="LEFT">C library for set operation</TD>
+</TR>
+<TR><TD ALIGN="LEFT">setoper.h</TD>
+<TD ALIGN="LEFT">header file for setoper.c</TD>
+</TR>
+<TR><TD ALIGN="LEFT">cddman.tex</TD>
+<TD ALIGN="LEFT">Latex source of this manual itself</TD>
+</TR>
+<TR><TD ALIGN="LEFT">makefile</TD>
+<TD ALIGN="LEFT">makefile for cdd+ compilation</TD>
+</TR>
+<TR><TD ALIGN="LEFT">HISTORY.cdd</TD>
+<TD ALIGN="LEFT">brief description of changes made at each updates</TD>
+</TR>
+<TR><TD ALIGN="LEFT">README.cdd+</TD>
+<TD ALIGN="LEFT">cdd+ readme file</TD>
+</TR>
+<TR><TD ALIGN="LEFT">ine</TD>
+<TD ALIGN="LEFT">A subdirectory containing sample inequality files</TD>
+</TR>
+<TR><TD ALIGN="LEFT">ext</TD>
+<TD ALIGN="LEFT">A subdirectory containing sample points files for hull computation</TD>
+</TR>
+<TR><TD ALIGN="LEFT">COPYING</TD>
+<TD ALIGN="LEFT">GNU GENERAL PUBLIC LICENSE</TD>
+</TR>
+</TABLE>
+
+<P>
+To compile the code in a standard unix environment (with GNU gcc compiler), type
+<PRE>
+  make all
+</PRE>
+to obtain an optimized executable file cdd and dplex_test.  If this does not work,
+modify the file, Makefile. The GNU compiler gcc can be replaced by cc, 
+if aother ANSI  C compiler cc is available.
+Since the program includes some standard ANSI library 
+headers such as stdlib.h and time.h at compilation, 
+the compiler must know the locations of the standard ANSI libraries.
+Also, the files cdd.c, cdd.h, cdddef.h, cddarith.c, cddio.c, dplex.c, dplexdef.h,
+dplex.h, setoper.c and  setoper.h are supposed to be
+in the current directory.
+
+<P>
+</DD>
+<DT>(2)</DT>
+<DD>[Recompilation] The first two constants in the program dplexdef.h are to be 
+changed by the user if necessary, and the program must be recompiled
+each time after any change is made.   These constants are simply
+to specify the largest size of acceptable input data <IMG
+ WIDTH="60" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img55.png"
+ ALT="$(b, -A)$">: 
+<PRE>
+#define dp_MMAX   5002  /* USER'S CHOICE: max row size of A plus two */
+#define dp_NMAX   101   /* USER'S CHOICE: max column size of A plus one */
+</PRE>
+If this input data has <IMG
+ WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.png"
+ ALT="$m$"> rows and <IMG
+ WIDTH="44" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img15.png"
+ ALT="$d+1$"> columns, then in the program,
+dp_MMAX should be at least <IMG
+ WIDTH="50" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img46.png"
+ ALT="$m+1$"> and dp_NMAX should be at least
+<IMG
+ WIDTH="44" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img15.png"
+ ALT="$d+1$">.  Although it has no sense to set the sizes 
+dp_MMAX and dp_NMAX much larger
+than necessary, the program only creates spaces 
+for dp_MMAX+dp_NMAX pointers
+and uses only necessary storage space for each input, and
+thus large dp_MMAX and dp_NMAX won't be too harmful.
+
+<P>
+</DD>
+<DT>(3)</DT>
+<DD>[TURBO/THINK C Users] The program cdd.c is written in
+ANSI C, and thus it should run on
+personal computers without any changes if one uses a compliler supporting
+ANSI standard. I have been using  THINK C without
+any problems if ANSI library is added to the project together with
+cdd.c, cddarith.c, cddio.c, dplex.c and setoper.c.  
+I could also compile it with some
+old version of TURBO C.  Due to limited memory capacities of
+these compilers, it is perhaps necessary to reduce the constants MMAX and NMAX
+to, say 2001 and 51.
+</DD>
+</DL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html91"
+  HREF="node7.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html89"
+  HREF="cddman.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html83"
+  HREF="node5.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html92"
+  HREF="node7.html">Source Files and Compilation</A>
+<B> Up:</B> <A NAME="tex2html90"
+  HREF="cddman.html">cdd/cdd+ Reference Manual</A>
+<B> Previous:</B> <A NAME="tex2html84"
+  HREF="node5.html">How to Use</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Komei Fukuda
+2005-08-18
+</ADDRESS>
+</BODY>
+</HTML>

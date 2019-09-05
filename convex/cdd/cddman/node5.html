@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>How to Use</TITLE>
+<META NAME="description" CONTENT="How to Use">
+<META NAME="keywords" CONTENT="cddman">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cddman.css">
+
+<LINK REL="next" HREF="node6.html">
+<LINK REL="previous" HREF="node4.html">
+<LINK REL="up" HREF="cddman.html">
+<LINK REL="next" HREF="node6.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html81"
+  HREF="node6.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html79"
+  HREF="cddman.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html73"
+  HREF="node4.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html82"
+  HREF="node6.html">Source Files and Compilation</A>
+<B> Up:</B> <A NAME="tex2html80"
+  HREF="cddman.html">cdd/cdd+ Reference Manual</A>
+<B> Previous:</B> <A NAME="tex2html74"
+  HREF="node4.html">Options</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00050000000000000000"></A>  <A NAME="HOWTO"></A>
+<BR>
+How to Use
+</H1>
+
+<P>
+The program hardly has any user interface.  Once you have compiled
+executable files,  <EM>cdd</EM>,  <EM>cddf+</EM> and <EM>cddr+</EM> 
+(see Section&nbsp;<A HREF="node6.html#sources_cdd">6</A> for cdd, Section&nbsp;<A HREF="node7.html#sources_cdd+">7</A> for cdd+), 
+and once you create an input file,
+say, <EM>test.ine</EM>, you have basically two ways to run the program.
+The simplest way is just to run cdd/cdd+ with 
+<PRE>
+  % cdd test.ine
+</PRE>
+or
+<PRE>
+  % cddf+ test.ine
+</PRE>
+or, if you want to compute with rational (exact arithmetic)
+<PRE>
+  % cddr+ test.ine
+</PRE>
+Then the program will open necessary output files with
+default file names as shown in Table&nbsp;<A HREF="#FIG:files">1</A> 
+and output the requested results.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="225"></A>
+<TABLE>
+<CAPTION><STRONG>Table 1:</STRONG>
+Default  extensions for output files</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1" ALIGN="CENTER">
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="CENTER" COLSPAN=2>Input File Format</TD>
+</TR>
+<TR><TD ALIGN="LEFT">options</TD>
+<TD ALIGN="CENTER" COLSPAN=1>H-format (*.ine)</TD>
+<TD ALIGN="CENTER" COLSPAN=1>V-format (*.ext)</TD>
+</TR>
+<TR><TD ALIGN="LEFT">conversion</TD>
+<TD ALIGN="LEFT">*.ext</TD>
+<TD ALIGN="LEFT">*.ine</TD>
+</TR>
+<TR><TD ALIGN="LEFT">incidence</TD>
+<TD ALIGN="LEFT">*.ecd</TD>
+<TD ALIGN="LEFT">*.icd</TD>
+</TR>
+<TR><TD ALIGN="LEFT">input_incidence</TD>
+<TD ALIGN="LEFT">*.iad</TD>
+<TD ALIGN="LEFT">*.ead</TD>
+</TR>
+<TR><TD ALIGN="LEFT">adjacency</TD>
+<TD ALIGN="LEFT">*.ead</TD>
+<TD ALIGN="LEFT">*.iad</TD>
+</TR>
+<TR><TD ALIGN="LEFT">input_adjacency</TD>
+<TD ALIGN="LEFT">*.iad</TD>
+<TD ALIGN="LEFT">*.ead</TD>
+</TR>
+<TR><TD ALIGN="LEFT">maximize/minimize</TD>
+<TD ALIGN="LEFT">*.lps</TD>
+<TD ALIGN="LEFT">non applicable</TD>
+</TR>
+<TR><TD ALIGN="LEFT">facet_listing</TD>
+<TD ALIGN="LEFT">*.fis</TD>
+<TD ALIGN="LEFT">non applicable</TD>
+</TR>
+<TR><TD ALIGN="LEFT">vertex_listing</TD>
+<TD ALIGN="LEFT">non applicable</TD>
+<TD ALIGN="LEFT">*.vis</TD>
+</TR>
+<TR><TD ALIGN="LEFT">tope_listing</TD>
+<TD ALIGN="LEFT">*.tis</TD>
+<TD ALIGN="LEFT">non applicable</TD>
+</TR>
+<TR><TD ALIGN="LEFT">verify_input</TD>
+<TD ALIGN="LEFT">*.solved</TD>
+<TD ALIGN="LEFT">*.solved</TD>
+</TR>
+<TR><TD ALIGN="LEFT">preprojection</TD>
+<TD ALIGN="LEFT">*sub.ine</TD>
+<TD ALIGN="LEFT">non applicable</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">and *.ext</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+</TABLE>
+</DIV>
+ 
+<A NAME="FIG:files"></A></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+
+<P><P>
+<BR>
+If you wish to specify the output file names
+different from default, simply run the program by
+<PRE>
+  % cdd   (cddf+, cddr+)
+</PRE>
+and input desired file names at each of file name requests.
+Even after you run cdd this way, one can 
+change to the automatic mode by inputing the input file 
+name with additional semicolon, e.g. ``test.ine;''.
+
+<P>
+To test cdd/cdd+, it is suggested to run cdd+ with sample input files
+which are stored in subdirectories <B>ine</B> and <B>ext</B>.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html81"
+  HREF="node6.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html79"
+  HREF="cddman.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html73"
+  HREF="node4.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html82"
+  HREF="node6.html">Source Files and Compilation</A>
+<B> Up:</B> <A NAME="tex2html80"
+  HREF="cddman.html">cdd/cdd+ Reference Manual</A>
+<B> Previous:</B> <A NAME="tex2html74"
+  HREF="node4.html">Options</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Komei Fukuda
+2005-08-18
+</ADDRESS>
+</BODY>
+</HTML>

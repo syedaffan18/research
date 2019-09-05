@@ -1,0 +1,38 @@
+* cdd+: Double Description Method in C++:Version 0.76a1 (June 8, 1999)
+* Copyright (C) 1999, Komei Fukuda, fukuda@ifor.math.ethz.ch
+* Compiled for Rational Exact Arithmetic with GMP
+*Input File: chsh2.ine(57 x 17)
+*Initial set of hyperplanes:  7 8 11 12 13 14 15 16 33 36 37 51 53 54 55 56 57
+begin
+ 41  5
+18 34 19 17 4
+19 38 21 17 4
+20 35 25 17 4
+21 52 35 22 4
+22 10 41 25 5
+23 40 41 21 5
+24 9 47 24 6
+25 39 47 20 6
+26 6 59 29 7
+27 47 59 21 7
+28 5 71 30 8
+29 48 71 22 8
+30 4 100 44 8
+31 3 149 82 9
+32 2 233 137 9
+33 50 233 62 9
+34 46 233 41 9
+35 1 272 60 9
+36 45 272 25 9
+37 49 272 25 9
+38 41 272 9 9
+end
+*HyperplaneOrder: LexMin
+*Degeneracy preknowledge for computation: None (possible degeneracy)
+*Vertex/Ray enumeration is chosen.
+*Computation completed at Iteration 38.
+*set_intersection total#, effective#, loss# = 1404  676  728
+*Computation starts     at Mon Dec 13 19:04:50 2010
+*            terminates at Mon Dec 13 19:04:51 2010
+*Total processor time = 1 seconds
+*                     = 0h 0m 1s

@@ -1,0 +1,6 @@
+*Input Error: Input format is not correct.
+*Format:
+ begin
+   m   n  NumberType(real, rational or integer)
+   b  -A
+ end

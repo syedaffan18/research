@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>What's new?</TITLE>
+<META NAME="description" CONTENT="What's new?">
+<META NAME="keywords" CONTENT="cddman">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cddman.css">
+
+<LINK REL="next" HREF="node2.html">
+<LINK REL="previous" HREF="cddman.html">
+<LINK REL="up" HREF="cddman.html">
+<LINK REL="next" HREF="node2.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html41"
+  HREF="node2.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html39"
+  HREF="cddman.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html33"
+  HREF="cddman.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html42"
+  HREF="node2.html">Introduction</A>
+<B> Up:</B> <A NAME="tex2html40"
+  HREF="cddman.html">cdd/cdd+ Reference Manual</A>
+<B> Previous:</B> <A NAME="tex2html34"
+  HREF="cddman.html">cdd/cdd+ Reference Manual</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00010000000000000000">
+What's new?</A>
+</H1>
+
+<P>
+Thanks to TU-Berlin's Polymake Team, cdd+ now runs with GNU's
+GMP rational library as well as with the GNU g++ Rational library.
+In particular, Polymake Team (Ewgenij Gawrilow and Michael Joswig)
+wrote C++ wrappers "gmp_integer.cc" and "gmp_rational.cc" for GMP 
+which cdd+ can now use instead of GNU's G++ Rational arithmetic library.
+
+<P>
+Since cdd+ with GMP runs substantially faster 
+than cddr+ with g++Rational, any cdd+ user who needs exact arithmetic
+computation is strongly recommended to use the GMP version.
+One should be also aware that GMP-2.0.2 has known bugs and
+all the patches available from GMP-Homepage 
+(<A NAME="tex2html1"
+  HREF="http://www.matematik.su.se/~tege/gmp/">http://www.matematik.su.se/~tege/gmp/</A>)
+
+should be applied first.
+Even with all these troubles, its speed compensates them easily.
+How much faster?  It all depends on your data.  For kkd* polytopes
+included in cdd+, cddr+_gmp runs three to ten times faster than
+cddr+_g++.  For less complicated polytopes, the speedup might be modest
+but one can expect the gmp version runs always faster.
+
+<P>
+<BR><HR>
+<ADDRESS>
+Komei Fukuda
+2005-08-18
+</ADDRESS>
+</BODY>
+</HTML>

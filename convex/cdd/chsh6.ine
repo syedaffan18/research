@@ -1,0 +1,19 @@
+* cdd+: Double Description Method in C++:Version 0.76a1 (June 8, 1999)
+* Copyright (C) 1999, Komei Fukuda, fukuda@ifor.math.ethz.ch
+* Compiled for Rational Exact Arithmetic with GMP
+*Input File:chsh6.ext(144x17)
+*HyperplaneOrder: LexMin
+*Degeneracy preknowledge for computation: None (possible degeneracy)
+*Hull computation is chosen.
+*Computation starts     at Mon Jan 10 15:37:17 2011
+*            terminates at Mon Jan 10 15:37:17 2011
+*Total processor time = 0 seconds
+*                     = 0h 0m 0s
+*Since hull computation is chosen, the output is a minimal inequality system
+*FINAL RESULT:
+*Number of Facets = 0
+H-representation
+begin
+0  17  rational
+end
+*Input Error: The polytope (convex hull) is not full dimensional.

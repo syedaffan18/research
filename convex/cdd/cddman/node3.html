@@ -1,0 +1,510 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Polyhedra H- and V-Formats (Version 1997)</TITLE>
+<META NAME="description" CONTENT="Polyhedra H- and V-Formats (Version 1997)">
+<META NAME="keywords" CONTENT="cddman">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cddman.css">
+
+<LINK REL="next" HREF="node4.html">
+<LINK REL="previous" HREF="node2.html">
+<LINK REL="up" HREF="cddman.html">
+<LINK REL="next" HREF="node4.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html61"
+  HREF="node4.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html59"
+  HREF="cddman.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html53"
+  HREF="node2.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html62"
+  HREF="node4.html">Options</A>
+<B> Up:</B> <A NAME="tex2html60"
+  HREF="cddman.html">cdd/cdd+ Reference Manual</A>
+<B> Previous:</B> <A NAME="tex2html54"
+  HREF="node2.html">Introduction</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00030000000000000000"></A> <A NAME="FORMAT"></A>
+<BR>
+Polyhedra H- and V-Formats (Version 1997)
+</H1>
+
+<P><P>
+<BR>
+Every convex polyhedron has two representations, one as
+the intersection of finite halfspaces and the other
+as Minkowski sum of the convex hull of finite points
+and the nonnegative hull of finite directions.  These are
+called H-representation and V-representation, respectively.
+
+<P>
+Naturally there are two basic Polyhedra formats, 
+H-format for  H-representation and V-format for
+V-representation.    These two formats are designed
+to be almost indistinguishable, and in fact, one can
+almost pretend one for the other.   There is some asymmetry
+arising from the asymmetry of two representations.
+
+<P>
+First we start with the halfspace representation.
+Let <IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.png"
+ ALT="$A$"> be an <IMG
+ WIDTH="50" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.png"
+ ALT="$m \times d$"> matrix, and let <IMG
+ WIDTH="12" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img4.png"
+ ALT="$b$"> be a column <IMG
+ WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.png"
+ ALT="$m$">-vector.
+The Polyhedra format  (<EM>H-format</EM> )  of 
+the system <IMG
+ WIDTH="58" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ A x \le b$"> of <IMG
+ WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.png"
+ ALT="$m$"> inequalities in <IMG
+ WIDTH="13" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img12.png"
+ ALT="$d$"> variables
+<!-- MATH
+ $x =(x_1, x_2, \ldots, x_d)^T$
+ -->
+<IMG
+ WIDTH="161" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img14.png"
+ ALT="$x =(x_1, x_2, \ldots, x_d)^T$"> is
+
+<P>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT" COLSPAN=3>various comments</TD>
+</TR>
+<TR><TD ALIGN="LEFT" COLSPAN=3><B>H-representation</B></TD>
+</TR>
+<TR><TD ALIGN="LEFT" COLSPAN=3><B>begin</B></TD>
+</TR>
+<TR><TD ALIGN="CENTER"><IMG
+ WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.png"
+ ALT="$m$"></TD>
+<TD ALIGN="CENTER"><IMG
+ WIDTH="44" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img15.png"
+ ALT="$d+1$"></TD>
+<TD ALIGN="LEFT">numbertype</TD>
+</TR>
+<TR><TD ALIGN="CENTER"><IMG
+ WIDTH="12" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img4.png"
+ ALT="$b$"></TD>
+<TD ALIGN="CENTER"><IMG
+ WIDTH="31" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.png"
+ ALT="$-A$"></TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT" COLSPAN=3><B>end</B></TD>
+</TR>
+<TR><TD ALIGN="LEFT" COLSPAN=3>various options</TD>
+</TR>
+</TABLE>
+
+<P>
+
+<P><P>
+<BR>
+where numbertype can be one of integer, rational or real.
+When rational type is selected, each component
+of <IMG
+ WIDTH="12" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img4.png"
+ ALT="$b$"> and <IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.png"
+ ALT="$A$"> can be specified by the usual integer expression 
+or by the rational expression ``<IMG
+ WIDTH="30" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img17.png"
+ ALT="$p / q$">''  or  ``<IMG
+ WIDTH="44" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.png"
+ ALT="$-p / q$">'' where
+<IMG
+ WIDTH="13" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img19.png"
+ ALT="$p$"> and <IMG
+ WIDTH="13" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.png"
+ ALT="$q$"> are arbitrary long positive integers (see the example
+input file rational.ine).  In the new 1997 format,
+we introduced ``H-representation'' which must appear
+before ``begin''. 
+There was one restriction in the old polyhedra format 
+(before 1997):  the last <IMG
+ WIDTH="13" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img12.png"
+ ALT="$d$"> rows must determine
+a vertex of <IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img11.png"
+ ALT="$P$">.  This is obsolete now.
+
+<P>
+Now we introduce  Polyhedra  <EM>V-format</EM>.  Let <IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img11.png"
+ ALT="$P$"> be 
+represented by <IMG
+ WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img21.png"
+ ALT="$n$"> extreme points and <IMG
+ WIDTH="13" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.png"
+ ALT="$s$"> rays as 
+<!-- MATH
+ $P = conv(v_1,\ldots,v_n) +  nonneg(r_1,\ldots,r_s)$
+ -->
+<IMG
+ WIDTH="323" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img7.png"
+ ALT="$P = conv(v_1,\ldots,v_n) + nonneg(r_1,\ldots,r_s)$">.
+Then the Polyhedra V-format for <IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img11.png"
+ ALT="$P$"> is defined as
+
+<P>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT" COLSPAN=3>various comments</TD>
+</TR>
+<TR><TD ALIGN="LEFT" COLSPAN=3><B>V-representation</B></TD>
+</TR>
+<TR><TD ALIGN="LEFT" COLSPAN=3><B>begin</B></TD>
+</TR>
+<TR><TD ALIGN="CENTER"><IMG
+ WIDTH="44" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.png"
+ ALT="$n+s$"></TD>
+<TD ALIGN="CENTER"><IMG
+ WIDTH="44" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img15.png"
+ ALT="$d+1$"></TD>
+<TD ALIGN="LEFT">numbertype</TD>
+</TR>
+<TR><TD ALIGN="CENTER"><IMG
+ WIDTH="13" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.png"
+ ALT="$1$"></TD>
+<TD ALIGN="CENTER"><IMG
+ WIDTH="21" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img25.png"
+ ALT="$v_1$"></TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER"><IMG
+ WIDTH="9" HEIGHT="27" ALIGN="BOTTOM" BORDER="0"
+ SRC="img26.png"
+ ALT="$\vdots$"></TD>
+<TD ALIGN="CENTER"><IMG
+ WIDTH="9" HEIGHT="27" ALIGN="BOTTOM" BORDER="0"
+ SRC="img26.png"
+ ALT="$\vdots$"></TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER"><IMG
+ WIDTH="13" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.png"
+ ALT="$1$"></TD>
+<TD ALIGN="CENTER"><IMG
+ WIDTH="22" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img27.png"
+ ALT="$v_n$"></TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER"><IMG
+ WIDTH="13" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img28.png"
+ ALT="$0$"></TD>
+<TD ALIGN="CENTER"><IMG
+ WIDTH="20" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.png"
+ ALT="$r_1$"></TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER"><IMG
+ WIDTH="9" HEIGHT="27" ALIGN="BOTTOM" BORDER="0"
+ SRC="img26.png"
+ ALT="$\vdots$"></TD>
+<TD ALIGN="CENTER"><IMG
+ WIDTH="9" HEIGHT="27" ALIGN="BOTTOM" BORDER="0"
+ SRC="img26.png"
+ ALT="$\vdots$"></TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER"><IMG
+ WIDTH="13" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img28.png"
+ ALT="$0$"></TD>
+<TD ALIGN="CENTER"><IMG
+ WIDTH="19" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.png"
+ ALT="$r_s$"></TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT" COLSPAN=3><B>end</B></TD>
+</TR>
+<TR><TD ALIGN="LEFT" COLSPAN=3>various options</TD>
+</TR>
+</TABLE>
+
+<P>
+
+<P><P>
+<BR>
+Here we do not require that
+vertices and rays are listed
+separately; they can appear mixed in arbitrary
+order.   Before the year 1997, 
+the option ``hull'' was used instead of ``V-representation''
+in V-format.  The old option is obsolete but cdd+ still
+understands this option for backward compatibility.
+The reverse search code lrs has employed this new format
+from version 3.2.
+
+<P>
+When the representation statement, either ``H-representation''
+or ``V-representation'', is omitted, the former
+``H-representation'' is assumed.
+
+<P>
+It is strongly suggested to use the following rule for naming
+H-format files and V-format files:   
+<DL>
+<DT><STRONG>(a)</STRONG></DT>
+<DD>use the filename  extension ``.ine'' for H-files (where ine stands for inequalities), and 
+</DD>
+<DT><STRONG>(b)</STRONG></DT>
+<DD>use the filename  extension ``.ext'' for V-files (where ext stands for extreme points/rays). 
+</DD>
+</DL>
+
+<P>
+The program cdd+ does two transformations, one from an H-format
+to a V-format, and the reverse.    While an input file (in H-format or V-format)
+can have redundant information, cdd+ outputs a minimal representation
+(in V-format or H-format).
+
+<P>
+For example, let <IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img11.png"
+ ALT="$P$"> be the following unbounded 3-dimensional 
+H-polyhedron given by
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ \begin{displaymath}
+P = \{ x  \in R^3:
+    1\le x_1 \le 2, \; 1 \le x_2 \le 2, \; 1 \le x_3,  \; x_1 + x_2 \le 4 \},
+\end{displaymath}
+ -->
+
+<IMG
+ WIDTH="463" HEIGHT="31" BORDER="0"
+ SRC="img31.png"
+ ALT="\begin{displaymath}
+P = \{ x \in R^3:
+1\le x_1 \le 2, \; 1 \le x_2 \le 2, \; 1 \le x_3, \; x_1 + x_2 \le 4 \},
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+which is a 3-cube without one ``lid''.   The last inequality is redundant
+because it is implied by <IMG
+ WIDTH="54" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img32.png"
+ ALT="$x_1 \le 2$"> and <IMG
+ WIDTH="54" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img33.png"
+ ALT="$x_2 \le 2$">.  This is added
+to show how cdd+ works with redundant data.
+For finding all
+vertices and extreme rays, the input file for cdd+ is
+
+<P>
+<PRE>
+* file name: ucube.ine
+* 3 cube without one "lid"
+H-representation
+begin
+    6      4    integer
+  2   -1   0   0
+  2    0  -1   0
+ -1    1   0   0
+ -1    0   1   0
+ -1    0   0   1
+  4   -1  -1   0
+end
+incidence
+adjacency
+input_adjacency
+input_incidence
+</PRE>
+
+<P>
+The meaning of options ``incidence'', ``adjacency''
+``input_adjacency'' and ``input_incidence'' 
+will be explained in Section&nbsp;<A HREF="node4.html#OPTIONS">4</A>.
+After you run cddr+ (the rational arithmetic version of cdd+) or cddf+
+with this input file, you will get
+an output file ucube.ext  which is the minimal V-representation
+of the polyhedron:
+
+<P>
+<PRE>
+* cdd+: Double Description Method in C++:Version 0.76 (March 17, 1999)
+* Copyright (C) 1999, Komei Fukuda, fukuda@ifor.math.ethz.ch
+* Compiled for Rational Exact Arithmetic with GMP
+*Input File:ine/ucube.ine(6x4)
+*HyperplaneOrder: LexMin
+*Degeneracy preknowledge for computation: None (possible degeneracy)
+*Vertex/Ray enumeration is chosen.
+*Output adjacency file is requested.
+*Input adjacency file is requested.
+*Output incidence file is requested
+*Input incidence file is requested.
+*Computation completed at Iteration 6.
+*Computation starts     at Wed Mar 17 06:56:51 1999
+*            terminates at Wed Mar 17 06:56:51 1999
+*Total processor time = 0 seconds
+*                     = 0h 0m 0s
+*FINAL RESULT:
+*Number of Vertices =4, Rays =1
+V-representation
+begin
+5  4  rational
+ 1 2 1 1
+ 1 1 1 1
+ 1 1 2 1
+ 1 2 2 1
+ 0 0 0 1
+end
+hull
+</PRE>
+
+<P>
+The output shows that the polyhedron has four vertices
+<IMG
+ WIDTH="60" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img34.png"
+ ALT="$(2,1,1)$">, <IMG
+ WIDTH="60" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img35.png"
+ ALT="$(1,1,1)$">, <IMG
+ WIDTH="60" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img36.png"
+ ALT="$(1,2,1)$">, <IMG
+ WIDTH="60" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img37.png"
+ ALT="$(2,2,1)$"> and
+only one extreme ray <IMG
+ WIDTH="60" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img38.png"
+ ALT="$(0,0,1)$">.  The comments contain
+information on the name of input file, and the options
+chosen to run the program which will be explained in
+the next section.  
+
+<P>
+Now, if you run cdd+ with this output file ucube.ext,
+cdd+ will perform the convex hull operation to recover 
+essentially the original inequalities.  More precisely, if
+we make a copy ucube2.ext of ucube.ext, and run
+cddr+ (or cddf+) with this copy, it will create a new ucube2.ine file:
+
+<P>
+<PRE>
+* cdd+: Double Description Method in C++:Version 0.76 (March 17, 1999)
+* Copyright (C) 1999, Komei Fukuda, fukuda@ifor.math.ethz.ch
+* Compiled for Rational Exact Arithmetic with GMP
+*Input File:ucube2.ext(5x4)
+.
+.
+.
+*Number of Facets = 5
+H-representation
+begin
+5  4  rational
+ -1 0 1 0
+ -1 1 0 0
+ 2 0 -1 0
+ 2 -1 0 0
+ -1 0 0 1
+end
+</PRE>
+
+<P>
+It is easy to check that this H-representation is
+essentially the same as the one we started with, except the
+new one does not contain any redundant inequality and the orderings
+are different.
+
+<P>
+Note that this back-and-forth transformation of a polyhedron works
+only when a polyhedron admits a unique minimal V-representation
+and a unique minimal H-representation.
+For example, when a polyhedron is full dimensional and contains
+at least one vertex, it satisfies these conditions.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html61"
+  HREF="node4.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html59"
+  HREF="cddman.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html53"
+  HREF="node2.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html62"
+  HREF="node4.html">Options</A>
+<B> Up:</B> <A NAME="tex2html60"
+  HREF="cddman.html">cdd/cdd+ Reference Manual</A>
+<B> Previous:</B> <A NAME="tex2html54"
+  HREF="node2.html">Introduction</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Komei Fukuda
+2005-08-18
+</ADDRESS>
+</BODY>
+</HTML>

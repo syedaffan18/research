@@ -1,0 +1,240 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Source Files and Compilation for cdd+</TITLE>
+<META NAME="description" CONTENT="Source Files and Compilation for cdd+">
+<META NAME="keywords" CONTENT="cddman">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cddman.css">
+
+<LINK REL="next" HREF="node8.html">
+<LINK REL="previous" HREF="node6.html">
+<LINK REL="up" HREF="cddman.html">
+<LINK REL="next" HREF="node8.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html101"
+  HREF="node8.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html99"
+  HREF="cddman.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html93"
+  HREF="node6.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html102"
+  HREF="node8.html">Some Useful Tips for</A>
+<B> Up:</B> <A NAME="tex2html100"
+  HREF="cddman.html">cdd/cdd+ Reference Manual</A>
+<B> Previous:</B> <A NAME="tex2html94"
+  HREF="node6.html">Source Files and Compilation</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00070000000000000000"></A>  <A NAME="sources_cdd+"></A>
+<BR>
+Source Files and Compilation for cdd+
+</H1>
+
+<P>
+<DL COMPACT>
+<DT>(1)</DT>
+<DD>[Files and Compilation] The source files for distribution are
+
+<P>
+<TABLE CELLPADDING=3>
+<TR><TD ALIGN="LEFT">cdd+.readme</TD>
+<TD ALIGN="LEFT">The readme file</TD>
+</TR>
+<TR><TD ALIGN="LEFT">cdd.C</TD>
+<TD ALIGN="LEFT">C++ main source file</TD>
+</TR>
+<TR><TD ALIGN="LEFT">cddarith.C</TD>
+<TD ALIGN="LEFT">C++ main arithmetic code</TD>
+</TR>
+<TR><TD ALIGN="LEFT">cddpivot.C</TD>
+<TD ALIGN="LEFT">C++ pivot operation arithmetic code</TD>
+</TR>
+<TR><TD ALIGN="LEFT">cddio.C</TD>
+<TD ALIGN="LEFT">C++ IO code</TD>
+</TR>
+<TR><TD ALIGN="LEFT">cddrevs.C</TD>
+<TD ALIGN="LEFT">C++ reverse search code</TD>
+</TR>
+<TR><TD ALIGN="LEFT">cdd.h</TD>
+<TD ALIGN="LEFT">The header file for cdd.C</TD>
+</TR>
+<TR><TD ALIGN="LEFT">cdddef.h</TD>
+<TD ALIGN="LEFT">cdd+ definition file (whose two lines are to be edited by user)</TD>
+</TR>
+<TR><TD ALIGN="LEFT">cddtype.h</TD>
+<TD ALIGN="LEFT">cdd+ arithmetic type definition file</TD>
+</TR>
+<TR><TD ALIGN="LEFT">cddrevs.h</TD>
+<TD ALIGN="LEFT">The header file for cddrevs.C</TD>
+</TR>
+<TR><TD ALIGN="LEFT">setoper.C</TD>
+<TD ALIGN="LEFT">C++ library for set operation</TD>
+</TR>
+<TR><TD ALIGN="LEFT">setoper.h</TD>
+<TD ALIGN="LEFT">The header file for setoper.C</TD>
+</TR>
+<TR><TD ALIGN="LEFT">cddman.tex</TD>
+<TD ALIGN="LEFT">Latex 2<IMG
+ WIDTH="12" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img85.png"
+ ALT="$\epsilon$"> source file of cdd+ Reference Manual</TD>
+</TR>
+<TR><TD ALIGN="LEFT">cddman.bbl</TD>
+<TD ALIGN="LEFT">bibliography file of cdd+ Reference Manual</TD>
+</TR>
+<TR><TD ALIGN="LEFT">cddHISTORY</TD>
+<TD ALIGN="LEFT">brief description of changes made at each updates</TD>
+</TR>
+<TR><TD ALIGN="LEFT">ine</TD>
+<TD ALIGN="LEFT">A subdirectory containing sample inequality input  files</TD>
+</TR>
+<TR><TD ALIGN="LEFT">ext</TD>
+<TD ALIGN="LEFT">A subdirectory containing sample point/ray input files</TD>
+</TR>
+<TR><TD ALIGN="LEFT">makefile</TD>
+<TD ALIGN="LEFT">gcc-2.8.* makefile for cddf+ and cddr+</TD>
+</TR>
+<TR><TD ALIGN="LEFT">get_essential</TD>
+<TD ALIGN="LEFT">gawk script for facet_listing and vertex_listing</TD>
+</TR>
+<TR><TD ALIGN="LEFT">gmp_integer.cc</TD>
+<TD ALIGN="LEFT">Polymake's GMP wrapper in C++</TD>
+</TR>
+<TR><TD ALIGN="LEFT">gmp_rational.cc</TD>
+<TD ALIGN="LEFT">Polymake's GMP wrapper in C++</TD>
+</TR>
+<TR><TD ALIGN="LEFT">COPYING</TD>
+<TD ALIGN="LEFT">GNU GENERAL PUBLIC LICENSE</TD>
+</TR>
+</TABLE>
+
+<P>
+For compilation of cdd+, one needs either GNU's GMP (libgmp.a)  or GNU's 
+g++ Rational library (libg++.a) .   It is strongly recommended to use GMP since
+it runs much faster.  Note that libg++ is not supported by GNU any more.
+Also try to use a recent GNU's C++ compiler (gcc-2.8.* or higher).
+Most likely you have to edit makefile according to 
+the setup of a GNU gcc compiler, GMP or g++-library,
+ and type
+<PRE>
+   % make all
+</PRE>
+which creates two executables, cddr+ (either cddr+_gmp or cddr+_g++)
+ and cddf+.  The executable
+cddr+ computes with rational (exact arithmetic) and cddf+ computes
+with floating-point arithmetic.  If you want to create only one of
+them, use ''make cddf+'' or ''make cddr+''.  Once these executables are 
+created one might want to remove all object files *.o by
+<PRE>
+   % rm *.o
+</PRE>
+
+<P>
+We experienced some problems with older versions of gcc.    Also, be aware that
+gcc and g++-library that come with NEXTSTEP 3.2 have bugs in the Rational library.
+Please use gcc and g++lib on the newest version NEXTSTEP 3.3, or build a recent
+gcc and g++library on older systems.
+
+<P>
+Note that cddr+ reads Polyhedra data in integer or rational
+number type, while cddf+ reads data in integer, rational and real number type.
+When cddf+ reads integer or rational numbers, it first converts them
+to floating point numbers and computes with floating-point arithmetic.
+
+<P>
+</DD>
+<DT>(2)</DT>
+<DD>[Recompilation] The first two constants in the program cdddef.h are to be 
+changed by the user if necessary, and the program must be recompiled
+each time after any change is made.   These constants are simply
+to specify the largest size of acceptable input data <IMG
+ WIDTH="60" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img55.png"
+ ALT="$(b, -A)$">: 
+<PRE>
+#define MMAX    5002  /* USER'S CHOICE: max row size of A plus one */
+#define NMAX    101   /* USER'S CHOICE: max column size of A plus one */
+</PRE>
+If this input data has <IMG
+ WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.png"
+ ALT="$m$"> rows and <IMG
+ WIDTH="44" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img15.png"
+ ALT="$d+1$"> columns, then in the program,
+MMAX should be at least <IMG
+ WIDTH="50" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img46.png"
+ ALT="$m+1$"> and NMAX should be at least
+<IMG
+ WIDTH="44" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img15.png"
+ ALT="$d+1$">.  Although it has no sense to set the sizes MMAX and NMAX much larger
+than necessary, the program only creates spaces for MMAX+NMAX pointers
+and uses only necessary storage space for each input, and
+thus large MMAX and NMAX won't be too harmful.
+
+<P>
+Unlike the pascal version pdd, one can set the size MMAX as large as one
+wants.  It is no more restricted by the SET TYPE element sizes of 
+usual Pascal compilers.
+
+<P>
+</DD>
+<DT>(3)</DT>
+<DD>[Windows/Mac Users]  In principle, cdd+ with GMP can
+be compiled on any platform that allows GMP  and comes 
+with modern C++ compilers with STL.
+Yet, I have no experiences.  You might also want to try
+the ANSI C program cdd and cddlib
+instead which can be found in the same ftp site as cdd+.
+</DD>
+</DL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html101"
+  HREF="node8.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html99"
+  HREF="cddman.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html93"
+  HREF="node6.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html102"
+  HREF="node8.html">Some Useful Tips for</A>
+<B> Up:</B> <A NAME="tex2html100"
+  HREF="cddman.html">cdd/cdd+ Reference Manual</A>
+<B> Previous:</B> <A NAME="tex2html94"
+  HREF="node6.html">Source Files and Compilation</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Komei Fukuda
+2005-08-18
+</ADDRESS>
+</BODY>
+</HTML>

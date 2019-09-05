@@ -1,0 +1,1031 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Options</TITLE>
+<META NAME="description" CONTENT="Options">
+<META NAME="keywords" CONTENT="cddman">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cddman.css">
+
+<LINK REL="next" HREF="node5.html">
+<LINK REL="previous" HREF="node3.html">
+<LINK REL="up" HREF="cddman.html">
+<LINK REL="next" HREF="node5.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html71"
+  HREF="node5.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html69"
+  HREF="cddman.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html63"
+  HREF="node3.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html72"
+  HREF="node5.html">How to Use</A>
+<B> Up:</B> <A NAME="tex2html70"
+  HREF="cddman.html">cdd/cdd+ Reference Manual</A>
+<B> Previous:</B> <A NAME="tex2html64"
+  HREF="node3.html">Polyhedra H- and V-Formats</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00040000000000000000"></A>  <A NAME="OPTIONS"></A>
+<BR>
+Options
+</H1>
+
+<P>
+The following options are available for cdd.  These options are
+set if they appear in input file after the ``end'' command.
+Independent options can be set simultaneously, but each option
+must be written separately in one line, and  two options
+should not be written in one line.  When two or more non-independent
+options are specified, the last one overrides the others.
+Also note that options are case-sensitive.
+
+<P>
+<DL>
+<DT><STRONG>hull</STRONG></DT>
+<DD>option 
+<BR>
+This old option exists only for the sake of
+backward compatibility.  This is to enforce
+the computation to be convex hull computation,
+interpreting the current data as a V-representation.
+Use V-representation instead.
+
+<P>
+</DD>
+<DT><STRONG>verify_input</STRONG></DT>
+<DD>option
+<BR>
+When this option is chosen, the program will
+output the input problem as cdd+ interpreted.  
+The default output  file is ``*.solved''. 
+This option helps user to verify what problem
+is actually solved.  The default for this option is off.
+See the sample files verifyinput1.ine and verifyinput2.ine
+
+<P>
+</DD>
+<DT><STRONG>dynout_off</STRONG></DT>
+<DD>option
+<BR>
+When this option is chosen, the program will
+not output vertices and rays to the CRT in real time.  
+The default is dynout_on.
+
+<P>
+</DD>
+<DT><STRONG>stdout_off</STRONG></DT>
+<DD>option
+<BR>
+When this option is chosen, the program will not
+output any progress report of computation (iteration number. etc).
+The default is stdout_on.
+
+<P>
+</DD>
+<DT><STRONG>logfile_on</STRONG></DT>
+<DD>option
+<BR>
+When this option is chosen, the program will output
+to a specified file (*.ddl) some information on the computation history.
+This can be useful when the user does not know which hyperplane order
+(mincutoff, maxcutoff, mixcutoff, lexmin, lexmax, minindex, random)
+is efficient for computation.
+
+<P>
+</DD>
+<DT><STRONG>incidence, input_incidence,  #incidence</STRONG></DT>
+<DD>options
+<BR>
+When the <B>incidence</B> option is selected, the incidence relation for
+each <B>output</B> with respect to input will be generated.    The default filename
+is *.icd  if <B>output</B> is inequalities (i.e. *.ine), and *.ecd  
+<A NAME="tex2html2"
+  HREF="footnode.html#foot93"><SUP>1</SUP></A>if <B>output</B> is extreme points and
+rays (i.e. *.ext).
+
+<P>
+When the <B>input_incidence</B> option is selected, the incidence relation for
+each <B>input</B> with respect to output will be generated.    The default filename
+is *.icd  if <B>input</B> is inequalities (i.e. *.ine), and *.ecd  
+if <B>input</B> is extreme points and
+rays (i.e. *.ext).  This option was added to cdd+ ver. 0.74 and
+<B>not available in cdd</B>.
+
+<P>
+Here, an extreme point is said to be 
+<EM>incident with</EM> an inequality if the inequality is satisfied by equality.
+An extreme ray <IMG
+ WIDTH="13" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img39.png"
+ ALT="$r$"> is said to be <EM>incident with</EM> 
+an inequality <!-- MATH
+ $a^T \; x \le b$
+ -->
+<IMG
+ WIDTH="70" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img40.png"
+ ALT="$a^T \; x \le b$"> if  <IMG
+ WIDTH="69" HEIGHT="19" ALIGN="BOTTOM" BORDER="0"
+ SRC="img41.png"
+ ALT="$a^T \; r = 0$">.  
+
+<P>
+For example,
+since the incidence option was set for the example input file ucube.ine in
+the previous section, the program outputs the following ucube.ecd file:
+<PRE>
+*Incidences of output(=vertices/rays) and input (=hyperplanes)
+*   for each output, #incidence and the set of hyperplanes containing it
+*   or its complement with its cardinality with minus sign
+*cdd input file : ucube.ine  (6 x 4)
+*cdd output file: ucube.ext
+begin
+  5  6  7
+ 3 :  1 4 5
+ 3 :  3 4 5
+ 3 :  2 3 5
+ -3 :  3 4 7
+ -1 :  5
+end
+</PRE>
+After ``begin'', there are three numbers <!-- MATH
+ $5 \quad 6 \quad 7$
+ -->
+<IMG
+ WIDTH="65" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img42.png"
+ ALT="$5 \quad 6 \quad 7$">.
+The first number <IMG
+ WIDTH="13" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img43.png"
+ ALT="$5$"> is a number of output (vertices and rays).
+The next number <IMG
+ WIDTH="13" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img44.png"
+ ALT="$6$"> is <IMG
+ WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.png"
+ ALT="$m$">, the number of inequalities in the input file.
+The last number <IMG
+ WIDTH="13" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img45.png"
+ ALT="$7$"> is usually <IMG
+ WIDTH="50" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img46.png"
+ ALT="$m+1$">, and <IMG
+ WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.png"
+ ALT="$m$"> if the input linear inequality
+system is homogeneous (i.e., has zero RHS) or the hull option is chosen.
+The number <IMG
+ WIDTH="50" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img46.png"
+ ALT="$m+1$"> corresponds to the infinity constraint which is added
+for vertex/ray enumeration when the input system is not homogeneous.
+
+<P>
+The incidence data starts right after these three numbers.
+At each line, the cardinality of incident inequalities and
+the list of their indices are given.  There is an exception that, when
+there are more incident inequalities than non-incident ones, then the program
+outputs the list of non-incident inequalities with its
+size with negative sign.  This is to save space of output.
+
+<P>
+For example, the first output line <!-- MATH
+ $3 \; : \; 1 \; 4 \; 5$
+ -->
+<IMG
+ WIDTH="73" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img47.png"
+ ALT="$3 \; : \; 1 \; 4 \; 5$"> 
+corresponds to the
+first vertex of ucube.ext file in previous section, that is, 
+the vertex <IMG
+ WIDTH="60" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img34.png"
+ ALT="$(2,1,1)$">.  The first number <IMG
+ WIDTH="13" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img48.png"
+ ALT="$3$"> is simply the number
+of incident inequalities and the rest is the indices of
+those inequalities, and so the 1st, 4th and 5th inequalities are
+satisfied by equality at this vertex.   The last output
+<IMG
+ WIDTH="60" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img49.png"
+ ALT="$-1 \; : \; 5$"> corresponds to the ray  <IMG
+ WIDTH="60" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img38.png"
+ ALT="$(0,0,1)$">.  Since all inequalities
+except the last (5th) inequality are incident with this ray,
+the output is the  (shorter) complementary list with its cardinality (=1) with negative
+sign.  Note that the full list would be <!-- MATH
+ $6 \; : \; 1 \; 2 \; 3 \; 4 \; 6 \; 7$
+ -->
+<IMG
+ WIDTH="114" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img50.png"
+ ALT="$6 \; : \; 1 \; 2 \; 3 \; 4 \; 6 \; 7$">, where
+<IMG
+ WIDTH="13" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img44.png"
+ ALT="$6$"> is the infinity plane.  One can ignore the infinity
+plane for some purposes,  but for analyzing the combinatorial 
+structure of polyhedra, it is
+very important information.
+
+<P>
+Also, since the input_incidence option was set for the example input file ucube.ine in
+the previous section, the program outputs the following ucube.icd file:
+<PRE>
+*cdd input file : ucube.ine (6 x 4)
+*cdd output file: ucube.ext
+*Incidence of input (=inequalities/facets) w.r.t. output (=vertices/rays).
+*row 7 is redundant;dominated by: 1 2 3 4 6
+*row 6 is redundant;dominated by: 1 2
+begin
+  6  5  5
+ -2 : 2 3
+ -2 : 1 2
+ -2 : 1 4
+ -2 : 3 4
+ -1 : 5
+ 2 : 4 5
+ 1 : 5
+end
+</PRE>
+After ``begin'', there are three numbers <!-- MATH
+ $6 \quad 5 \quad 5$
+ -->
+<IMG
+ WIDTH="65" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img51.png"
+ ALT="$6 \quad 5 \quad 5$">.
+The first number <IMG
+ WIDTH="13" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img44.png"
+ ALT="$6$"> is a number of input (inequalities).
+The next number <IMG
+ WIDTH="13" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img43.png"
+ ALT="$5$"> is <IMG
+ WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.png"
+ ALT="$m$">, the number of vertices and rays in the output file.
+The last number <IMG
+ WIDTH="13" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img43.png"
+ ALT="$5$"> is always  <IMG
+ WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.png"
+ ALT="$m$"> for all *.icd files.  The remaining
+lines can be interpreted similarly with ucube.ecd file.  The input_incidence
+option is <B>not available in cdd</B>.
+
+<P>
+The <B>#incidence</B> option can be used when you do not wish
+to output the incidence file but to output only the cardinality of incidence
+for each output, at the end of each output line.
+
+<P>
+The incidence files (adjacency file, input_adjacency as well) 
+can be created independently
+after *.ext file is created, see ``postanalysis'' option. 
+
+<P>
+</DD>
+<DT><STRONG>nondegenerate</STRONG></DT>
+<DD>option
+<BR>
+When this option is set, the program assumes that the input system
+is not degenerate, i.e., there is no point in the space <IMG
+ WIDTH="26" HEIGHT="19" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.png"
+ ALT="$R^d$"> satisfying
+more than <IMG
+ WIDTH="13" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img12.png"
+ ALT="$d$"> inequalities of input with equality.
+It will run faster with this option, but of course, 
+if this option is set for degenerate inputs, it is 
+quite possible that the output is incorrect.  
+The default is this option being off.
+
+<P>
+</DD>
+<DT><STRONG>adjacency</STRONG></DT>
+<DD>option
+<BR>
+This option can be used when you want to output the adjacency of output.
+When the output is the list of vertices and rays, the program will
+output the adjacency list.  For the example input ``ucube.ine'',
+the following extra file  ``ucube.ead''  <A NAME="tex2html3"
+  HREF="footnode.html#foot108"><SUP>2</SUP></A>  will be created:
+<PRE>
+*Adjacency List of output (=vertices/rays)
+*cdd input file : ucube.ine (6 x 4)
+*cdd output file: ucube.ext
+begin
+  5
+ 1 3 : 2 4 5
+ 2 3 : 1 3 5
+ 3 3 : 2 4 5
+ 4 3 : 1 3 5
+ 5 4 : 1 2 3 4
+end
+</PRE>
+The first number <IMG
+ WIDTH="13" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img43.png"
+ ALT="$5$"> is simply the number of outputs of cdd, the
+number of vertices and rays in this case.
+The second line <!-- MATH
+ $1 \quad  3 \quad : 2 \quad  4 \quad  5$
+ -->
+<IMG
+ WIDTH="132" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img52.png"
+ ALT="$ 1 \quad 3 \quad : 2 \quad 4 \quad 5$"> says 
+that the first output of
+ucube.ext file has degree (valency) <IMG
+ WIDTH="13" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img48.png"
+ ALT="$3$">, and its three neighbors are
+2nd, 4th and 5th output.
+
+<P>
+When the computation is to obtain the hull (inequality system),
+the adjacency is of course that of inequalities (i.e. facets).
+
+<P>
+The adjacency file (incidence file, input_adjacency file) 
+can be created independently
+after *.ext file is created, see ``postanalysis'' option.
+
+<P>
+</DD>
+<DT><STRONG>input_adjacency</STRONG></DT>
+<DD>option
+<BR>
+This is for cdd+ and <B>not available in cdd</B>.
+This option is for outputing the adjacency of input inequalities.
+Here, two inequalities are defined to be <EM>adjacent</EM> if 
+they are nonredundant and there is no third input inequality
+which is satisfied with equality at all points of the polyhedron
+that satisfy the two inequalities with equality. 
+In more intuitive language, two inequalities are adjacent
+if each determine a facet of the polyhedron and the intersection
+of the two facets is not contained in any other facet.
+
+<P>
+The default file name for this output is *.iad.  This file
+lists the redundancy information of input also.  For the example
+``ucube.ine'' above, the following ``ucube.iad'' will
+be generated:
+<PRE>
+*Adjacency List of input (=inequalities/facets)
+*cdd input file : ucube.ine (6 x 4)
+*cdd output file: ucube.ext
+*row 7 is redundant;dominated by: 1 2 3 4 6
+*row 6 is redundant;dominated by: 1 2
+begin
+  7
+ 1 3 : 2 4 5
+ 2 3 : 1 3 5
+ 3 3 : 2 4 5
+ 4 3 : 1 3 5
+ 5 4 : 1 2 3 4
+ 6 0 :
+ 7 0 :
+end
+</PRE>
+Observe that the 6th inequality and the 
+artificially added 7th inequality (infinity)
+are found redundant.  The 7th inequality is redundant
+because the first four facets intersects at
+a single infinity point (corresponding to a unique extreme ray)
+and hence the polyhedron has no infinity facet,
+although the polyhedron is not bounded.
+
+<P>
+The input_adjacency file  can be created independently
+after *.ext file is created, see ``postanalysis'' option.
+
+<P>
+While cdd+ uses both *.ine and *.ext files to compute the adjacency
+of input,  it can be computed very efficiently by linear programming technique, 
+using only the input data.   This will be explained in
+the Polyhedral computation FAQ [<A
+ HREF="node13.html#f-pcfaq">Fuk04</A>].
+
+<P>
+</DD>
+<DT><STRONG>postanalysis</STRONG></DT>
+<DD>option
+<BR>
+It is often more desirable to compute the adjacency, 
+input_adjacency, incidence and input_incidence relations
+independently from the main (and often heavy) computation of enumerating all vertices
+and extreme rays.  The ``postanalysis'' option can be used together
+with ``adjacency'' and/or ``incidence'' options for this purpose  
+to create *.adj and/or *.icd files from both *.ine and *.ext files.
+If *.ine file contains this option, cdd+ will open the
+corresponding *.ext file and output requested *.adj, *.iad and/or *.icd files.
+An error occurs when *.ext file does not exist in the current
+directory.
+
+<P>
+</DD>
+<DT><STRONG>lexmin, lexmax, minindex,mincutoff, maxcutoff, mixcutoff, random</STRONG></DT>
+<DD>options
+<BR>
+The double description is an incremental algorithm which
+computes the vertices/rays of a polyhedron given by some <IMG
+ WIDTH="14" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img53.png"
+ ALT="$k$"> of
+original inequalities from the precomputed vertices/rays of a
+polyhedron given by <IMG
+ WIDTH="44" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img54.png"
+ ALT="$k-1$"> inequalities.  It is observed that
+the efficiency of the algorithm depends strongly on how
+one selects the ordering of inequalities, although a little
+can be said theoretically.
+These options are to select the ordering of inequalities to be
+added at each iteration, and it is recommended to do small
+experiment to select good ordering for a specific type of problems.
+Unfortunately, a good ordering depends on the problem and there does not seem 
+to be THE BEST ordering for every computation.  From our experiences,
+lexmin, lexmax, mincutoff, maxcuoff work quite well in general.
+
+<P>
+The default is lexmin ordering which simply order inequalities
+with respect to lexico-graphic ordering of rows of <IMG
+ WIDTH="60" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img55.png"
+ ALT="$(b, -A)$">.  The lexmax
+is reverse of lexmin.  The mincutoff (maxcutoff) option selects an inequality which
+cuts off the minimum (maximum) number of vertices/rays of the <IMG
+ WIDTH="58" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img56.png"
+ ALT="$(k-1)$">st polyhedron. 
+The mixcutoff option is the mixture of mincutoff and maxcutoff which selects
+an inequality which cuts off the <IMG
+ WIDTH="58" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img56.png"
+ ALT="$(k-1)$">st polytope as unbalanced as possible.
+The maxcutoff option might be efficient if the input contains
+many redundant inequalities (many interior points for hull computation).
+The minindex option selects the hyperplanes from the top of
+the input.
+
+<P>
+The random option selects the inequalities in a random order.  This option
+must be followed by a random seed which is positive integer (less than
+65536).  For example, <B>random 123</B> specifies the random option with
+the random seed 123. 
+
+<P>
+</DD>
+<DT><STRONG>initbasis_at_bottom</STRONG></DT>
+<DD>option
+<BR>
+When this option is set, the program tries to select
+the initial set of rows for the double description
+method from the bottom of the input.  This means that
+if the last (d+1) rows are independent, 
+they will be chosen to initiate the algorithm.
+
+<P>
+This option is <EM>not</EM> default. The default
+follows the same ordering as the ordering
+of inequalities chosen.  This means that if <B>lexmin</B>
+is the ordering of inequalities, then the initial 
+independent rows
+will be chosen sequentially with lexico-min ordering.
+There are exceptions when this rule
+is not applicable, i.e. when one of mincutoff or maxcutoff
+options is chosen. In such cases, <B>lexmin</B>
+ordering will be chosen.
+
+<P>
+</DD>
+<DT><STRONG>maximize, minimize</STRONG></DT>
+<DD>options
+<BR>
+When maximize option is set with an objective vector 
+<!-- MATH
+ $c_0\: c_1 \: c_2 \ldots c_d$
+ -->
+<IMG
+ WIDTH="99" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img57.png"
+ ALT="$c_0\: c_1 \: c_2 \ldots c_d$">, the program
+simply solves the linear program: <!-- MATH
+ $\max c_0 + c_1 x_1 + c_2 x_2 +\cdots + c_d x_d$
+ -->
+<IMG
+ WIDTH="259" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img58.png"
+ ALT="$\max c_0 + c_1 x_1 + c_2 x_2 +\cdots + c_d x_d$">
+over the input polyhedron <IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img11.png"
+ ALT="$P$">. The grammar is simply
+
+<P>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT" COLSPAN=3>various comments</TD>
+</TR>
+<TR><TD ALIGN="LEFT" COLSPAN=3><B>H-representation</B></TD>
+</TR>
+<TR><TD ALIGN="LEFT" COLSPAN=3><B>begin</B></TD>
+</TR>
+<TR><TD ALIGN="CENTER"><IMG
+ WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.png"
+ ALT="$m$"></TD>
+<TD ALIGN="CENTER"><IMG
+ WIDTH="44" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img15.png"
+ ALT="$d+1$"></TD>
+<TD ALIGN="LEFT">numbertype</TD>
+</TR>
+<TR><TD ALIGN="CENTER"><IMG
+ WIDTH="12" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img4.png"
+ ALT="$b$"></TD>
+<TD ALIGN="CENTER"><IMG
+ WIDTH="31" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.png"
+ ALT="$-A$"></TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT" COLSPAN=3><B>end</B></TD>
+</TR>
+<TR><TD ALIGN="LEFT" COLSPAN=3>maximize</TD>
+</TR>
+<TR><TD ALIGN="LEFT" COLSPAN=3><!-- MATH
+ $c_0 \quad c_1 \quad c_2 \quad \cdots \quad c_d$
+ -->
+<IMG
+ WIDTH="161" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img59.png"
+ ALT="$c_0 \quad c_1 \quad c_2 \quad \cdots \quad c_d$"></TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+</TABLE>
+
+<P>
+The minimize option works exactly same way for minimization of
+a linear objective function.
+See the sample input file ``lptest.ine''.  The program cdd
+will output both primal and dual optimal solutions  if the LP
+is solvable.  If the LP is infeasible (dual infeasible), then
+it will output an evidence.
+
+<P>
+For the moment,  one can use either the dual simplex
+method (option ``dual-simplex'', default) 
+or the criss-cross method by Terlaky-Wang.  
+The latter method can be specified
+by option ``criss-cross'' and is very sensible to the ordering
+of inequalities.  The ordering options such as maxindex, lexmin and 
+random will affect the behavior of this solver.  Try to use
+a different ordering, if the computation takes too much time.
+
+<P>
+Also, in order to see the intermediate LP sign tableau 
+one can use ``show_tableau'' option.  Also use ``manual_pivot''
+option to select pivots manually.   Of course, these options are 
+intended for very small problems.
+
+<P>
+The minimize and maximize options should be used only in H-representation
+(*.ine) files, and the output filename is ``*.lps''.
+
+<P>
+</DD>
+<DT><STRONG>find_interior</STRONG></DT>
+<DD>option
+<BR>
+This is for cdd+ and <B>not available in cdd</B>.
+When this option is set, the program solves the linear program: 
+<IMG
+ WIDTH="75" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img60.png"
+ ALT="$\max x_{d+1}$">
+subject to <!-- MATH
+ $A x + e x_{d+1} \le b$
+ -->
+<IMG
+ WIDTH="123" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img61.png"
+ ALT="$ A x + e x_{d+1} \le b$">, where <IMG
+ WIDTH="12" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img62.png"
+ ALT="$e$"> is the
+column vector of all <IMG
+ WIDTH="13" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.png"
+ ALT="$1$">'s.  If the optimum value is zero,
+the polyhedron has no interior point.  If the optimum value is 
+negative then the polyhedron is empty. If the LP is dual inconsistent,
+then the polyhedron admits unbounded inscribed balls.  To find any
+interior point in this last case, one must add some inequality(ies)
+to bound the polyhedron. 
+
+<P>
+This option should be used only in H-representation
+(*.ine) files, and the output filename is ``*.lps''.
+
+<P>
+</DD>
+<DT><STRONG>facet_listing, vertex_listing</STRONG></DT>
+<DD>options
+<BR>
+These are for cdd+ and <B>not available in cdd</B>.
+When the option ``facet_listing''  is set, the program checks for each i-th row of the input 
+whether the associated inequality <IMG
+ WIDTH="69" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img63.png"
+ ALT="$A_i x \le b_i$"> determines a facet
+of the polyhedron.    This option should be used only in H-representation
+(*.ine) files, and the output filename is ``*.fis''.
+
+<P>
+When the option ``vertex_listing''  is set, the program 
+checks for each i-th row of the input 
+whether the associated point  <IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img64.png"
+ ALT="$v_i$"> determines a vertex
+of the polyhedron.    This option should be used only in V-representation
+(*.ext) files, and the output filename is ``*.vis''.
+
+<P>
+After *.vis or *.fis file (say test.vis) is obtained,  
+one can get the minimal nonredundant
+system by using the included gawk script  get_essential:
+<PRE>
+% get_essential &lt;  test.vis &gt;test\_ess.ine
+</PRE>
+You must have a gnu gawk command accessible at
+the current unix directory.  One must edit the new file
+test_ess.ine slightly according to the instruction
+written in the file.
+
+<P>
+</DD>
+<DT><STRONG>facet_listing_external, vertex_listing_external</STRONG></DT>
+<DD>options
+<BR>
+These options can be used to apply facet_listing and vertex_listing
+with a (possibly large) external file.   When  the option facet_listing_external 
+is set  with *.ine file, cdd+ will open an external file *.ine.external (in H-format)
+and verify for each inequality of the external file whether it changes the 
+original polyhedron  (represented by *.ine) if it is added.  The option
+vertex_listing_external can be set in *.ext file and works similarly.
+Since cdd+ reads each line of the external file one by one, the file
+can be very large, say of few hundred thousands lines. 
+
+<P>
+</DD>
+<DT><STRONG>tope_listing</STRONG></DT>
+<DD>option
+<BR>
+This is for cdd+ and <B>not available in cdd</B>.
+When this option is set, the program generates all full-dimensional
+regions (which are sometimes called topes) of the arrangement
+of hyperplanes <!-- MATH
+ $\{ h_i : i = 1,2, \ldots, m \}$
+ -->
+<IMG
+ WIDTH="160" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img65.png"
+ ALT="$\{ h_i : i = 1,2, \ldots, m \}$">, where 
+<!-- MATH
+ $h_i = \{ x : A_i x \le b_i \}$
+ -->
+<IMG
+ WIDTH="150" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img66.png"
+ ALT="$ h_i = \{ x : A_i x \le b_i \}$">.  Each tope will be
+represented by its location vector, i.e. 
+a sign vector in <IMG
+ WIDTH="69" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img67.png"
+ ALT="$\{+, -\} ^m$"> whose <IMG
+ WIDTH="10" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img68.png"
+ ALT="$i$">-component
+indicates the (positive or negative) side of the hyperplane <IMG
+ WIDTH="20" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img69.png"
+ ALT="$h_i$">
+the tope is located.  This procedure assumes that the input
+polyhedron is full-dimensional and thus the vector of all <IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img70.png"
+ ALT="$+$">'s
+determines a tope.   This option should be used only in H-representation
+(*.ine) files, and the output filename is ``*.tis''.
+
+<P>
+</DD>
+<DT><STRONG>partial_enumeration, equality, linearity, strict_inequality</STRONG></DT>
+<DD>options
+<BR>
+With partial_enumeration option 
+(or equivalently equality or linearity options), 
+one can enumerate only those
+vertices and rays that are lying on the set of hyperplanes
+associated with specified inequality numbers. If you want
+to compute all vertices/rays lying on hyperplanes
+associated with <IMG
+ WIDTH="14" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img53.png"
+ ALT="$k$"> inequalities <!-- MATH
+ $i_1, i_2, \ldots, i_k$
+ -->
+<IMG
+ WIDTH="92" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img71.png"
+ ALT="$i_1, i_2, \ldots, i_k$">
+(<!-- MATH
+ $1 \le i_j \le m$
+ -->
+<IMG
+ WIDTH="88" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img72.png"
+ ALT="$1 \le i_j \le m$">), then
+the option should be specified as
+
+<P>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT" COLSPAN=3>various comments</TD>
+</TR>
+<TR><TD ALIGN="LEFT" COLSPAN=3><B>H-representation</B></TD>
+</TR>
+<TR><TD ALIGN="LEFT" COLSPAN=3><B>begin</B></TD>
+</TR>
+<TR><TD ALIGN="CENTER"><IMG
+ WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.png"
+ ALT="$m$"></TD>
+<TD ALIGN="CENTER"><IMG
+ WIDTH="44" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img15.png"
+ ALT="$d+1$"></TD>
+<TD ALIGN="LEFT">numbertype</TD>
+</TR>
+<TR><TD ALIGN="CENTER"><IMG
+ WIDTH="12" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img4.png"
+ ALT="$b$"></TD>
+<TD ALIGN="CENTER"><IMG
+ WIDTH="31" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.png"
+ ALT="$-A$"></TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT" COLSPAN=3><B>end</B></TD>
+</TR>
+<TR><TD ALIGN="LEFT" COLSPAN=3>partial_enumeration</TD>
+</TR>
+<TR><TD ALIGN="LEFT" COLSPAN=3><!-- MATH
+ $k \quad i_1 \quad i_2 \quad \cdots \quad i_k$
+ -->
+<IMG
+ WIDTH="151" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.png"
+ ALT="$k \quad i_1 \quad i_2 \quad \cdots \quad i_k$"></TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+</TABLE>
+
+<P>
+The <B>strict_inequality</B>  option follows the same 
+grammar as partial_enumeration or equality.  
+With this, cdd outputs only those vertices and rays not satisfying
+any of the specified inequalities with equality.  See the sample files, 
+partialtest1.ine and partialtest2.ine. 
+
+<P>
+These options make no effect on LP maximization or minimization.
+
+<P>
+</DD>
+<DT><STRONG>preprojection</STRONG></DT>
+<DD>option
+<BR>
+This option is for a preprocessing
+of orthogonal projection of the polyhedron to the subspace of
+<IMG
+ WIDTH="26" HEIGHT="19" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.png"
+ ALT="$R^d$"> spanned by a subset of variables.  
+That is, if the inequality inequality system is 
+of two-block form  <!-- MATH
+ $A_1 x_1 + A_2 x_2 \le b$
+ -->
+<IMG
+ WIDTH="133" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img74.png"
+ ALT="$A_1 x_1 + A_2 x_2 \le b$">, 
+and the variable indices for <IMG
+ WIDTH="22" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img75.png"
+ ALT="$x_1$">, say <IMG
+ WIDTH="62" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img76.png"
+ ALT="$1, 4, 6, 7$">,
+are listed in the input file as
+
+<P>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT" COLSPAN=3><B>H-representation</B></TD>
+</TR>
+<TR><TD ALIGN="LEFT" COLSPAN=3><B>begin</B></TD>
+</TR>
+<TR><TD ALIGN="CENTER"><IMG
+ WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.png"
+ ALT="$m$"></TD>
+<TD ALIGN="CENTER"><IMG
+ WIDTH="44" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img15.png"
+ ALT="$d+1$"></TD>
+<TD ALIGN="LEFT">numbertype</TD>
+</TR>
+<TR><TD ALIGN="CENTER"><IMG
+ WIDTH="12" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img4.png"
+ ALT="$b$"></TD>
+<TD ALIGN="CENTER"><IMG
+ WIDTH="31" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.png"
+ ALT="$-A$"></TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT" COLSPAN=3><B>end</B></TD>
+</TR>
+<TR><TD ALIGN="LEFT" COLSPAN=3>preprojection</TD>
+</TR>
+<TR><TD ALIGN="LEFT" COLSPAN=3><!-- MATH
+ $4 \quad 1 \quad 4 \quad 6 \quad7$
+ -->
+<IMG
+ WIDTH="118" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img77.png"
+ ALT="$4 \quad 1 \quad 4 \quad 6 \quad7$"></TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+</TABLE>
+
+<P>
+Then, cdd+ will output the inequality system,
+<!-- MATH
+ $A_1 x_1  \le b$
+ -->
+<IMG
+ WIDTH="73" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img78.png"
+ ALT="$A_1 x_1 \le b$">, together with the list <IMG
+ WIDTH="18" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img79.png"
+ ALT="$R$"> of extreme
+rays of the homogeneous cone  <!-- MATH
+ $\{z:  z  \ge 0  \mbox{ and }  z^T A_2 = 0 \}$
+ -->
+<IMG
+ WIDTH="198" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img80.png"
+ ALT="$\{z: z \ge 0 \mbox{ and } z^T A_2 = 0 \}$">.  
+Consequently, the inequality system
+<!-- MATH
+ $\{ \quad r^T A_1  x_1  \le  r^T b : \quad r \in  R \}$
+ -->
+<IMG
+ WIDTH="221" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img81.png"
+ ALT="$\{ \quad r^T A_1 x_1 \le r^T b : \quad r \in R \}$">
+represents the projection of the original polyhedron onto
+<IMG
+ WIDTH="22" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img75.png"
+ ALT="$x_1$">-space with possible redundancy.  The default file names
+for the inequality system output and the extremal ray output are
+*sub.ine and *.ext, respectively if the input file is named *.ine.  
+
+<P>
+There is a supplementary  C program, called domcheck, 
+written by F. Margot, EPFL, which generates quickly a minimal
+(i.e. nonredundant) system from these two outputs.
+This program can be obtained from the standard ftp site for cdd.
+
+<P>
+</DD>
+<DT><STRONG>zero_tolerance</STRONG></DT>
+<DD>option
+<BR>
+This option is for cdd+ and <B>not available in cdd</B>.
+This affects only the floating-point computation with cddf+.
+This is to change the zero tolerance for floating point computation
+to a user-specified value.
+The default value is set in cddtype.h file as <IMG
+ WIDTH="40" HEIGHT="19" ALIGN="BOTTOM" BORDER="0"
+ SRC="img82.png"
+ ALT="$10^{-6}$">.  This should not
+be changed if you are not familiar with pitfalls of 
+floating-point computation.  A tolerance value should follow the option
+with blank(s) or a line break. If a tolerance is too small (e.g.
+<IMG
+ WIDTH="47" HEIGHT="19" ALIGN="BOTTOM" BORDER="0"
+ SRC="img83.png"
+ ALT="$10^{-20}$">), or if it is too big (e.g. <IMG
+ WIDTH="27" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img84.png"
+ ALT="$0.1$">), the computation
+will most likely fail.
+
+<P>
+</DD>
+<DT><STRONG>round_output_off, output_digits</STRONG></DT>
+<DD>options
+<BR>
+These options are for cdd+ and <B>not available in cdd</B>.
+This affects only the floating-point computation with cddf+.
+This is to modify the default output format of numbers.  The default is
+to output a number with 8 digits in scientific notation, except when
+the nearest integer is within <IMG
+ WIDTH="40" HEIGHT="19" ALIGN="BOTTOM" BORDER="0"
+ SRC="img82.png"
+ ALT="$10^{-6}$">, it outputs the integer.
+The first option is to cancel the latter rounding. This is recommended
+when zero_tolerance option above is used to change the tolerance.   
+The second option followed by a positive integer will set the number of
+digits for each number to the integer.  
+
+<P>
+</DD>
+</DL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html71"
+  HREF="node5.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html69"
+  HREF="cddman.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html63"
+  HREF="node3.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html72"
+  HREF="node5.html">How to Use</A>
+<B> Up:</B> <A NAME="tex2html70"
+  HREF="cddman.html">cdd/cdd+ Reference Manual</A>
+<B> Previous:</B> <A NAME="tex2html64"
+  HREF="node3.html">Polyhedra H- and V-Formats</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Komei Fukuda
+2005-08-18
+</ADDRESS>
+</BODY>
+</HTML>
