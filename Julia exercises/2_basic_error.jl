@@ -29,7 +29,7 @@ function cube_of_sum(n::Int)
 end
 
 function sum_of_cubes(n::Int)
-    sum((1:n).^ 2) # should be sum((1:n).^ 3) 
+    sum((1:n).^ 2) # should be sum((1:n).^ 3) or sum(1:n)^ 2 (because 1^3 + 2^3 +....+ n^3 = (1+2+3...+n)^2) 
 end
 
 function difference(n::Int)

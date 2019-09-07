@@ -109,7 +109,7 @@ end
 
 
 const valid_instructions = ["LAARA", "RRAAALLA"]
-const invalid_instructions = "RAX"
+const invalid_instructions = ""
 
 @testset "Point" begin
     @test fieldnames(Point) == (:x, :y)
