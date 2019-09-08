@@ -1,0 +1,28 @@
+How would we store a dictionary in a data structure?
+	Heap.
+
+
+Trie
+
+Example:
+Storing our names;
+	We store the alphabet of each word as links. Then at the end, we store their attribute, e.g. meaning for a dictionary.
+
+Uses:
+	Finding post-fixes of words. Or words with a certain prefix. E.g. autocomplete.
+	No collisions.
+
+Simplest case: Each node has 26 children. Which are by default NULL.
+
+find(word) O(l) where l is the length of the longest word
+	for every letter, we find a link. If at any point we find a nil, we say not found.
+add O(l)
+	for every letter, create a link. If the link exists follow it until you hit a nil. If a nil, add new branches for the whole world.
+remove O(l) 
+	Simple algorithm. Three cases.
+
+
+If we are using numbers, all processes become O(32/64) or depending on machine size, and therefore, find, add and remove become O(1)
+
+
+------->> **Suffix Trie - Missed Class.

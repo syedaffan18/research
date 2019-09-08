@@ -1,0 +1,87 @@
+1/3 Hash Tables
+
+Accessing in arrays is constant time.
+Hash tables use this property.
+Hash tables take the key, and then hash the key to a *hash value*. This hash value is used as the index in a hash table.
+
+If we are storing numbers, why don't we just use numbers as the index?
+	We might not have access to the memory location at number. If we are storing integers then the range is (2^64-1)
+
+
+Implemented insert(k), find(k), remove(k) for Chained Hash Tables.
+	See Affan's notebook. Too lazy to write them again here.
+
+****Chaining **** Method of dealing with collisions.
+Our hash functions should be very cheap in terms of computation. Let's say we are implementing the multiplicative hash function.
+		w is the space that key takes up in bits.
+				(64 in our case)
+	then hash(x) = (z.x mod (2^w))div 2^(w-d)
+
+****Linear Probing **** Another method of dealing with collisions.
+	Just store the item collided in the next position.
+	Insert(x)
+		Find the first available next (empty) position.
+	Find(x)
+		Calculate hash, look at index and start a linear probe;
+			-we either find the element
+			-we reach an empty position (we will always have an empty position because of resize strategy)
+	remove(x)
+		similar to find. Just pop the value after found.
+	We keep track of three variables - occupied, del, not occupied. We call q a  variable = occupied + del
+	** Condition
+	We should have as many unoccupied cells as q.  Therefored 2q<= length, always.
+
+**** Hashing non-integers ****
+Compund Types:
+	It is composed of different types.. We can breakdown any compound value into different number of integers.
+
+	Let's say compound type X = x0,x1,x2...x(r-1)
+
+	h(x) = (z.x mod (2^w)) dix (2^w-d)
+
+z is 32 bit.
+	so h(X) = (zn.(forall r-1)zi.xi) mod 2^2.w )div 2^(w-d)
+	zn is 2w bits, zi, xi, and w are  all w bits.
+
+Accessing in arrays is constant time.
+Hash tables use this property.
+Hash tables take the key, and then hash the key to a *hash value*. This hash value is used as the index in a hash table.
+
+If we are storing numbers, why don't we just use numbers as the index?
+	We might not have access to the memory location at number. If we are storing integers then the range is (2^64-1)
+
+
+Implemented insert(k), find(k), remove(k) for Chained Hash Tables.
+	See Affan's notebook. Too lazy to write them again here.
+
+****Chaining **** Method of dealing with collisions.
+Our hash functions should be very cheap in terms of computation. Let's say we are implementing the multiplicative hash function.
+		w is the space that key takes up in bits.
+				(64 in our case)
+	then hash(x) = (z.x mod (2^w))div 2^(w-d)
+
+****Linear Probing **** Another method of dealing with collisions.
+	Just store the item collided in the next position.
+	Insert(x)
+		Find the first available next (empty) position.
+	Find(x)
+		Calculate hash, look at index and start a linear probe;
+			-we either find the element
+			-we reach an empty position (we will always have an empty position because of resize strategy)
+	remove(x)
+		similar to find. Just pop the value after found.
+	We keep track of three variables - occupied, del, not occupied. We call q a  variable = occupied + del
+	** Condition
+	We should have as many unoccupied cells as q.  Therefored 2q<= length, always.
+
+**** Hashing non-integers ****
+Compund Types:
+	It is composed of different types.. We can breakdown any compound value into different number of integers.
+
+	Let's say compound type X = x0,x1,x2...x(r-1)
+
+	h(x) = (z.x mod (2^w)) dix (2^w-d)
+
+z is 32 bit.
+	so h(X) = (zn.(forall r-1)zi.xi) mod 2^2.w )div 2^(w-d)
+	zn is 2w bits, zi, xi, and w are  all w bits.

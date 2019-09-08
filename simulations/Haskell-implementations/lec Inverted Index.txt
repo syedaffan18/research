@@ -1,0 +1,102 @@
+--> Inverted Index
+▲▼ !"#$%&☺☻♥♦♣♠•◘○☺◙♂♀♪♫☼►◄↕‼¶"bcZ[\]a^_`○7açéx|}~☻⌂Çüé╚╔╩╦╠═╬╧╨╤▄╥╙╘{╓╫╪┘█▄▌▐▀αßΓπΣσµ▬τΦΘΩδ∞φε∩µ≡±≥≤⌠⌡÷≈°∙·ⁿ²■ ☺☻♥}
+
+Data structure used in Information retrieval, e.g. search engines.
+
+Crawlers go through certain number of documents and call these pages corpus. It then generates an inverted index of this corpus.
+Corpus is also called collection/ document collection.
+
+We make queries and the inverted index system gives us some documents from the corpus based on the query.
+
+Set of ALL terms in the corpus are called vocabulary.
+
+-->Boolean Inverted Index;
+	- aka Incidence Matrix.
+		-Enumerate all documents in the corpus. (columns)
+		-Enumerate all terms in the vocabulary. (rows)
+		-We place a 1 where each term in the vocabulary appears in the corpus.
+
+		E.x.:
+			D_1 D_2 D_3 ... D_n  (n documents in corpus)
+		T_1 1	0	1		0	
+		T_2 0 	0	1		0
+		T_3 0	1	1		1
+		.	.	.	.	.	.
+		.	.	.	.	.	.
+		T_m .	.	.	.	.
+		(m terms in vocabulary)
+
+		This matrix usually ends up being very sparse and therefore a more efficient method is to turn it into a list (just like adjacency matrix to adjacency list)
+
+		It can be used to perform straightforward queries:
+			All documents with T_1
+			All documents with T_2, T_3 but not T_4
+					- AND rows T_2 and T_3  and then AND the result with complement of T_4
+			All documents with T_i OR T_j
+
+		But if we are storing them as adjacency lists then we would have to traverse through the rows.
+
+	-->Proximity Search
+		Used for two terms searched together.
+		E.g. Searching for Habib University may return pages with the two words separated by other words.
+		One way to support that using the inverted Index is by modifying the structure:
+			Store lists with index of word in document instead of boolean values.
+
+		D_1 		D_2 		D_3 		D_4 	... 	D_n
+	T_1	[a,b,c]		[]		
+	T_2
+	T_3
+	T_4
+	.
+	.
+	T_m
+
+		If a query is made very often, we can add a Term of two words together in the list/matrix.
+
+		Some keywords for optimizing the index:
+			-Stop Words
+				Words that appear very often throughout the corpus.
+				E.g. English language: a, the, or, and
+					They do not have any discriminatory purpose. They do not help in the task of information retrieval and rarely get queries for them. A list of these is kept.
+			-Normalization
+				Words which may mean the same e.g. U.S.A vs  USA vs US of A
+				synonyms
+			-Stemming
+				Stem words all words deriving a word. e.g. car, cars, car's
+
+		Finding important terms in documents:
+			-tf_(t,a)
+				Term frequency of term t, and frequency a.
+				If we sort our list/matrix documents based on term frequencies;
+					called "Bag of Words"
+					So a document which has a high frequency of term T_1, it would be more important.
+			-df_(t)
+				Document frequency of term t
+				How many documents have that term. But it does not differentiate between a document which has the term 1 time vs a document which has the term 14 times.
+				Therefore we would like to bring down the term frequency using the Inverse Document Frequency
+			-idf_t
+				Inverse Document Frequency
+					= log(N/df_t)
+					Limits:
+						if df_t = N (words that appear in all documents) then idf = 0
+						if df_t = 1 (words that appear in single document) then idf = log(N)
+
+			Now the document does not store boolean values, instead stores the tf-idf score. where tf-idf = tf*idf.
+
+	Score of a document in a query:
+		For example if a query is T_1 T_5 T_13, then score is the sum of all scores T_1, T_5 and T_13
+		Score(q,d) = SUM(tf_idf_(t,d)) for t in q
+
+	Now we can see each document(d_i) as a vector. It has a score of 0 if it contains a term and a tf-idf_(t,d_i) score if it does contain it.
+	As a result, then we can also find similarities between two documents;
+		-Sim(d_i,d_j) = v(d_i).v(d_j)
+
+	Flaw: But we have not accounted for the size of the document. A term in a small document means more than it does for a being in a large document. To solve this problem, we now include unit vectors instead of vectors.
+		-Sim(d_i,d_j) = v^(d_i).v^(d_j)
+			Aka cosine similarity because scalar multiple of two vectors is the cosine angle between the vectors.
+
+	Now we can also see queries as a vector of terms.
+		Ex. q= T_1 T_2
+		then v_q = (T_1, T_2, 0,0)  (0s filled in if term not in query)
+		and v^_q = 1/sqrt(2) (T_1,T_2,0,0)
+	

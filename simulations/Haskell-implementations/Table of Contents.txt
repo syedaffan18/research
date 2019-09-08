@@ -1,0 +1,34 @@
+*------ Labs -------*
+lab2  -> Recursion
+lab3  -> Binary tree (Complete. Insert eats up a node)
+lab4  -> Btree (Not complete)
+lab5  -> RBtree (Not complete, finished in ass2)
+lab6  -> HashTable (Almost complete, finished in ass3)
+lab7  -> SkipLists (Insert Remains)
+lab8  -> Heap with Insert Implemented
+lab9  -> BTrie (Only the beginning)
+
+prelabs are self-explanatory.
+
+ass1 -> Practical; Recursion
+		Theory	 ; Linked List, rotate, trees.
+		33/40
+ass2 -> Practical; RBTree. Two implementations.
+		Theory	 ; Inserting and removing in 2-4 tree
+					and rbtree.
+		52/55
+ass3 -> Practical; HashTable
+		Theory	 ; Hash functions.
+		78/80
+ass4 -> Practical; Meldable Heaps and Sorting
+		Theory; Fibonacci Heaps
+		53.5/60
+
+Lectures:
+lec Heaps         -> Lecture on the heap structure as well as Fibonacci Heaps.
+lec Tries         -> Incomplete - Missed class on Suffix Tries.
+lec Graphs 	      -> Adj Matrix, Adj List, LookupTables
+lec HashTables 	  -> All the stuff on Hash Tables (Look up, hashing, collision, etc)
+lec InvertedIndex -> All Stuff on Inverted Indexes
+lec RBTrees
+lec SkipLists

@@ -1,0 +1,144 @@
+Treap = Tree + Heap.
+
+The heap property in Treap was:
+	The value of the children > value of the parent.
+
+Problem: Save a binary tree in an array
+
+	-Save it as a middle. Create an array of the size, insert root at the middle, then its left child in the middle of the left of 7, and so on.
+	So given a tree: 7 (10(11 14) 20(23 35)), our array would look like: 11,10,14,7,23,20,35
+	in this case, the left child would be a f(h,i), right child would be a f(h,i), and parent would be a f(h,i)
+	
+	-Another strategy is save it breadth first.(
+		So given the same tree, we get 7, 10, 20, 11, 14, 23, 35
+		left(i) = 2i+1, right(i) = 2i+2, parent(i) = ceil(i/2)-1 = (i-1)div2 = floor((i-1)/2).
+
+		This is the scheme followed by the heap.
+		Heap also maintains the same property: Value of Each of its children are greater than the node value.
+		This implies that the root has the smallest value.
+
+Heap is used to implement the Priority Queue. We would be interested in add and remove, not find.
+PQ has functions of push, and pop, where each item has a priority and they are inserted according to their priority.
+
+So the Heap is an array which represents a tree.
+	Let's take the following: 14,11,25,7,23,10,20.
+Add:
+
+	1.) 14,   			  (Implicit Tree:) ==> 14
+	2.) 14,11,_			  (Implicit Tree:) ==> 14(11,E)    (Create an empty space according to tree)
+			Violates the heap property. So we swap.
+		 ->  11,14		  (Implicit Tree:) ==> 11(14,E)
+	3.) 11,14,25    	  (Implicit Tree:) ==> 11(14,25) Same.
+	4.) 11,14,25,7,_,_,_  (Implicit Tree:) ==> 11(14(7,E)25(E,E))
+			Violates the heap property
+				We swap in the tree twice to get
+		 ->  7,11,25,14,_,_,_
+	5.) 7,11,25,14,23,_,_
+	6.) 7,11,25,14,23,10,_
+			Violates the heap property
+			Swapping twice gives:
+		 -> 7,11,10,14,23,25,_
+	7.) 7,11,10,14,23,25,20   (Implicit Tree:) ==> 7(11(14 23) 10(25 20))
+
+Remove:
+	Remove should remove the smallest value.
+	Consider the last case.
+	Replace the last element with the node we are removing.
+	So after remove the heap becomes:
+	-> 20,11,10,14,23,25,_
+	Then we perform the same series of swaps we did before.
+	This would result in : 10,11,20,14,23,25,_
+
+Properties of heap:
+	add is worst case logarithmic time.
+			(number of swaps may be at most the height of the tree)
+	remove is also worst case logarithmic time.
+			(number of swaps may be at most the height of the tree)
+
+Meldable Heap
+	merge(h1,h2):
+		if h1=nil, return h2
+		if h2=nil, return h1
+		if h2.x<h1.x then (h1,h2)=(h2,h1)  //root of h1 is smaller than root of h2
+
+		if random_bit():
+			h1.left=merge(h1.left,h2)
+			h1.left.parent = h1
+		else:
+			h1.right = merge(h1.right,h2)
+			h1.right.parent=h1
+
+		return h1
+
+
+After this:
+add(h,x) = merge (h,heap(x))
+remove(h) = merge (h.right,h.left)
+
+**** 31/3/16 ****
+▲▼ !"#$%&☺☻♥♦♣♠•◘○☺◙♂♀♪♫☼►◄↕‼¶"bcZ[\]a^_`○7açéx|}~☻⌂Çüé╚╔╩╦╠═╬╧╨╤▄╥╙╘{╓╫╪┘█▄▌▐▀αßΓπΣσµ▬τΦΘΩδ∞φε∩µ≡±≥≤⌠⌡÷≈°∙·ⁿ²■ ☺☻♥}
+																									 ⌡
+Fibonacci Heap:
+
+	Operations supported: 
+		Make_Heap()
+		Insert(H,x)   √
+		Minimum(H)
+		Extract_Min(H) 
+		Union(H1,H2)  √
+		Decrease_Key(H,x,k)
+		Delete(H,x)
+
+	Knows : How many elements - n, the minimum element -min, the root list.
+	Fibonacci heap stores bunch of trees.
+	
+	Ex.
+	We have a sequence of priorities: 1,14,7,6,5.
+	A valid fibonacci heap would be : [[1],[14],[7],[6],[5]] where each element is in itself a tree. When we insert a new tree, it just produces a new node and adds it. It also stores a pointer to the minimum value. So pointer would point to 1.
+	Adding 10 would be simple. Just create a node and insert it.
+	However if we insert -6, it would create a root node with entry -6, insert it, and then the min would point to -6.
+	So List looks like: [[1],[14],[7],[6],[5],[10],[-6]] and min = -6.
+	We allow duplicates.
+	Therefore, insert is O(1)
+
+	Missed some points on why this is problematic. Fill in later.
+
+	Fib_Heap_Insert(H,x):
+		x.degree = 0
+		x.p = nil
+		x.child = nil
+		x.mark = false
+		if H.min == nil:
+			create root list for H with x
+			H.min = x
+		else:
+			insert x in root list of H
+			if x.key<H.min.key:
+				H.min = x
+		H.n++     //#H.n stores number of roots
+
+	Fib_Heap_Union(H1,H2):
+		H = H1
+		H.min = H1.min
+		H.n = H1.n
+		concatenate root list of H with root list of H2
+		if (H2.min != nil and H2.min.key < H.min.key ) or H.min == nil:
+			H.min = H2.min
+		H.n+=H2.n
+		return H
+
+	Fib_Heap_Extract_Min(H):
+		z = H.min
+		if z!=Nil:
+			for each child x of z:
+				add x to root list of H
+				x.p = Nil
+			remove z from root list of H
+			if root list is empty:
+				H.min = Nil
+			else:
+				H.min = z.right
+				consolidate(H)
+			H.n--
+		return z
+

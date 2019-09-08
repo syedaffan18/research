@@ -1,0 +1,109 @@
+Skip Lists are data structures which have logarithmic access times.
+
+There is a sentinel which takes care of the L_0. This sentinel is always the first node.
+Items should be inserted in sorted order.
+
+	Implementation 1
+	L_0 First node is sentinel.
+		** Node1 -> Node2 -> Node3-> Node4->Node5->Node6 END
+
+	L_1 is a random subset of L_0.
+		You flip a coin for each node and include it or exclude it as a random choice.
+		**Node1			 ->Node3->Node4		->Node6 END
+
+	L_2 Similarly
+		** Node1->				->Node4 END
+
+	L_3
+		** Node1 END. Since the only node remaining is the sentinel, we exclude this list.
+
+Terminologies:
+	* Height of the Node : How many copies of the sentinels there are. (e.g. Node6 has height 2. Node 3 has Height 2, etc.)
+	* Height of the Skip List: How many copies of the list there are (the height of the sentinel.)
+
+**Find(x)
+	Start with the highest level of the list.
+	current node n = sentinel.
+		If the next of the sentinel is greater than x
+			descend one level
+			If cannot descend, return next of n.			//Book says: find(x) =y | y>= x (So you return next)
+		Else the next node becomes current node.
+		Repeat until we find the number.
+
+Implementation 2
+	Assume L_0
+		SENT NEXT -> 14 NEXT -> 18 NEXT -> 20 NEXT -> 25 NEXT -> 29 NULL
+	Generate random **height** for each node (has a reasonable upper limit)
+	Increase the NEXT* as a list.
+	L_0 becomes
+		SENT NEXT[4] -> 14 NEXT [2] -> 18 NEXT[1]->20 NEXT[4] -> 25 NEXTT -> 29 NULL[2]
+		So the links are actually at NEXT levels.
+
+**findPred(x):
+	u = sentinel
+	r = h 			//Level
+	while r>=0:
+		while u.next[r] != null AND u.next[r] <x:
+			u = u.next[r]
+		r=r-1
+	return u
+
+**find(x):
+	u = findPred(x)
+	if u.next[0] = nil:
+		return nil
+	return u.next[0].x
+
+Generating random numbers for the height.
+	Book says generate any random decimal integer, and count the number of 1s.
+		AND with 1, shift right, inserting 0.
+		
+
+**Printing L_r
+n=sentinel
+while n.next[r] != null:
+	n=n.next[r]
+	print n.val
+
+Insertion:
+	We mark all the nodes that we visit to find the insert position. (To find the node immediately lesser than the insert value)
+	We mark where we descend.
+	These are the nodes that will potentially be affected. We call them the stack of affected nodes.
+PseudoCode
+**add(x):
+	u = sentinel
+	r = h
+	while r>= 0
+		while u.next[r] != NIL and u.next[r].x(Val)<x:
+			u = u.next[r]
+		/*if u.next[r] != nil and u.next[r].x==x
+			return false*/ Checking if value in list.
+		stack[r] = u
+		r--
+	w = new_node(x,randomHeight())
+	while h<w.height
+		h++
+		stack[h] = sentinel
+----x---x---x---x---x---x Done with the stack
+	for i in [0,1,2..len(w.next)-1]
+		w.next[i] = stack[i].next[i]
+		stack[i].next[i] = w
+	n++ (Total number of nodes)
+	return true
+
+Remove is very much like insert.
+**remove(x)
+	removed = false
+	u = sentinel
+	r = h
+	while r>=0
+		while u.next[r] != null and u.next[r].val<x
+			u=u.next[r]
+		if u.next[r] != null and u.next[r].val = 
+			removed = true
+			u.next[r] = u.next[r].next[r]]
+			if u==sentinel and u.next[r] = null
+				h--
+		r--
+	if removed, n--  //n stores total number of nodes
+	return removed

@@ -1,0 +1,58 @@
+{-}
+--24/2/16
+--Red-black trees are derived from Btrees. But we do not wish to continue with combining both, therefore 
+--	we think of red-black trees as different enities.
+--		Operations needed are still rotate left and rotate right.
+------Properties::
+---------1. Every node is R/B
+---------2. Root is black
+---------3. Red has black children
+---------4. Black height is same for all leaves. 
+
+--Inserting in Red-Black Tree:
+----insert just like BST,
+----by Default, inserted node is Red.
+----Fix(n)
+--Fix(n)
+----if node is root, node is assigned black, done.
+----if parent is B, done.
+----p = n.parent
+----g = p.parent
+----u = n.uncle
+
+--****  Fixed on 25/2/16
+------if n.uncle is RED
+--------color p B
+--------color u black
+--------color g red
+--------Fix(g)
+------if n.uncle BLACK
+------if p = g.left
+--------if n = p.right  //node is left-right
+----------Rotate-Left(p)
+----------n=p
+----------Fix(n)
+--------if n= p.left  //node is left left
+----------color n.p Black
+----------color n.p.p Red
+----------rotate-right (n.p.p)
+------if p = g.right
+--------if n = p.left  //node is right-left
+----------rotate-right(p)
+----------n=p
+----------Fix(n)
+--------if n = p.right //node is right right
+----------color n.p black
+----------color n.p.p red
+----------rotate left (n.p.p)
+--**** Delete -- 26/2/16
+--Deleting in a Binary Search Tree
+----node has less than two children (leaf or 1 child)
+------Parent would take on the right child or the left child as its own right child or left child.
+----node has 2 children
+------find succ of node (should be leftmost node of the right sub-tree)
+------replace node value with succ
+------then actually remove succ (which is the same case as above because succ necessarily has only one sub-tree (right)
+--This delete is the same as binary delete
+----But the fixing of colors needs to be done if both nodes (to be removed, to be joined)
+------It has several cases which we would not do.
