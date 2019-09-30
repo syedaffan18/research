@@ -15,7 +15,7 @@ You need an access to a Kubernetes cluster.
 
 I used Google Cloud for the task. For that, you will need Google Cloud SDK & an account on GCP
 
-We have also configured Google Filestore to work as a NFS. You will need to configure yours and add its IP to "priviligedVolume.yaml" 
+We have also configured Google Filestore to work as a NFS. You will need to configure yours and add its IP to "persistentVolume.yaml" 
 
 ```
 
