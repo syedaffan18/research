@@ -1,0 +1,24 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: test
+spec:
+  schedule: "*/1 * * * *" #RUNNING EVERY MINUTE 
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: hello
+            image: gcr.io/kubernetes-app-254306/ultimate:latest
+            command: ["python"]
+            args: ["/usr/mysql.py","ABABABAB"]
+            env:
+            - name: MYSQL_ROOT_PASSWORD 
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: mysql-root-password    
+          restartPolicy: OnFailure
+
+            
