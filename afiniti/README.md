@@ -17,6 +17,8 @@ I used Google Cloud for the task. For that, you will need Google Cloud SDK & an 
 
 We have also configured Google Filestore to work as a NFS. You will need to configure yours and add its IP to "persistentVolume.yaml" 
 
+To check if it is proprely mounted, access the mysql pod using kubectl exec -it <MY_SQL_POD> sh then mount grep | <NFS_HOST/IP> 
+
 ```
 
 ### Installing
@@ -41,5 +43,14 @@ gcloud docker -- push gcr.io/<PROJECT_ID_ON_GCP>/<IMAGE>:latest
 The Build folder has all the yaml files, which you need to build your cluster 
 
 kubectl create -f <YAML_FILE> will create yaml files. Alternatively, you can kubectl apply -f <YAML_FILE> 
+
+MYSQL: 
+
+Access the mysql service's cluster IP and port. Tunnel it using kubectl port-forward <MYSQL_POD> <SYS_AVAILABLE_IB>:3306 to access it using a local mysql client like Workbench 
+
+Create secrets for user, database, and password using 
+
+kubectl create secret generic db-credentials --from-literal=mysql-user='root' --from-literal=mysql-database='afiniti' --from-literal=mysql-root-password='Test1234'
+
 ```
 
