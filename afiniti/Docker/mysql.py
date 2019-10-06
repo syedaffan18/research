@@ -1,6 +1,7 @@
 import pymysql,os,sys
 from itertools import combinations
 
+
 def longest_palindrome(s):
     pal = ''
     length = 0
@@ -13,10 +14,9 @@ def longest_palindrome(s):
     return pal
 
 def longest_pal():
-
-    lp = longest_palindrome(sys.argv[1:])
-
-    connection = pymysql.connect(host='localhost', user='root', password=os.getenv("MYSQL_ROOT_PASSWORD"), db='afiniti',charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+    lp = longest_palindrome(sys.argv[1])
+    print(os.getenv("MYSQL_ROOT_PASSWORD"))
+    connection = pymysql.connect(host=os.getenv("DB_HOST"),port=int(os.getenv("DB_PORT")), user=os.getenv("MYSQL_ROOT_USER"),database=os.getenv("MYSQL_DATABASE"), password=os.getenv("MYSQL_ROOT_PASSWORD"),charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
  
     try:
         with connection.cursor() as cursor:
@@ -37,5 +37,4 @@ def longest_pal():
     finally:
         connection.close()
 
-
-print (longest_palindrome("AAABDSDEER"))
+print (longest_pal())

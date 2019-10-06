@@ -31,7 +31,7 @@ spec:
                   key: mysql-root-password
       initContainers:
         - name: test-container
-          image: gcr.io/google_containers/busybox:1.24 #use default -- IT DOESN'T MOUNT TO THE HOST :(
+          image: gcr.io/google_containers/busybox:1.24 #use default -- It will print the logs using Stackdriver API 
           command: [ "/bin/sh", "-c", "echo $MY_POD_IP >> /tmp/bar ; echo $MY_NODE_NAME ; echo $MY_HOST_IP >> /tmp/bar;  cat /tmp/bar" ]
           env:
             - name: MY_POD_IP

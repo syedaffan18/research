@@ -3,22 +3,42 @@ kind: CronJob
 metadata:
   name: test
 spec:
-  schedule: "*/1 * * * *" #RUNNING EVERY MINUTE 
+  schedule: "*/1 * * * *"
   jobTemplate:
     spec:
       template:
         spec:
           containers:
           - name: hello
-            image: gcr.io/kubernetes-app-254306/ultimate:latest
+            image: gcr.io/kubernetes-app-254306/afiniti-img:latest
             command: ["python"]
-            args: ["/usr/mysql.py","ABABABAB"]
+            args: ["/usr/app/mysql.py", "ABCCCAB"]
             env:
             - name: MYSQL_ROOT_PASSWORD 
               valueFrom:
                 secretKeyRef:
                   name: db-credentials
-                  key: mysql-root-password    
+                  key: mysql-root-password
+            - name: MYSQL_ROOT_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-user
+                  key: mysql-user 
+            - name: MYSQL_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-database
+                  key: mysql-database
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: cron-config 
+                  key: database_host
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: cron-config 
+                  key: database_port
           restartPolicy: OnFailure
 
             
