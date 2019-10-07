@@ -31,8 +31,8 @@ spec:
                   key: mysql-root-password
       initContainers:
         - name: test-container
-          image: gcr.io/google_containers/busybox:1.24 #use default -- It will print the logs using Stackdriver API 
-          command: [ "/bin/sh", "-c", "echo $MY_POD_IP >> /tmp/bar ; echo $MY_NODE_NAME ; echo $MY_HOST_IP >> /tmp/bar;  cat /tmp/bar" ]
+          image: gcr.io/google_containers/busybox:1.24 
+          command: [ "/bin/sh", "-c", "echo $MY_HOST_IP >> /tmp/bar.log" ]
           env:
             - name: MY_POD_IP
               valueFrom:
@@ -46,7 +46,13 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: spec.nodeName
+          volumeMounts:
+          - name: logging-app-log-dir
+            mountPath: /tmp
       volumes:
         - name: mysql-data
           persistentVolumeClaim:
             claimName: mysql-server-claim
+        - name: logging-app-log-dir
+          hostPath:
+            path: /var/log/containers
