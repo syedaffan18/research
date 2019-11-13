@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+    workshop:
+        container_name: phpschool-learnyouphp
+        image: phpschool/learn-you-php
+        volumes:
+            - ~/.phpschool-save.json:/root/.phpschool-save.json
+            - $PHPSCHOOL_CODE_DIR/learnyouphp:/phpschool:rw
+        stdin_open: true
+        tty: true
